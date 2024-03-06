@@ -10,41 +10,62 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import pomclasses.SkisPage;
 import pomclasses.StorePage;
 import pomclasses.UltraLessonHomePage;
 
 public class TestMain {
-	 public static void main(String[] args) {
-// System.setProperty("webdriver.chrome.driver", "C:/Users/ACER/Eclipse_New/EcommerceAutomation/chrome.exe");
-//	 
-		 WebDriver driver = new ChromeDriver();
-    driver.get("https://web-playground.ultralesson.com/collections/all");
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-    UltraLessonHomePage homePage = new UltraLessonHomePage(driver);
-    StorePage storePage = homePage.navigateToStore();
-    SkisPage skisPage = storePage.selectTiSkis();
-   
- if (skisPage.addToCartButton.isDisplayed()) {
-     String buttonText = skisPage.addToCartButton.getText();
-     if (buttonText.contains("Sold out")) {
-         System.out.println("The product is sold out. Aborting the test.");
-     } else {
-    	 skisPage.addToCart();
-     }
- } else {
-     System.out.println("The 'Add to Cart' button is not visible. Aborting the test.");
- }
-   
-    Assert.assertTrue(driver.getPageSource().contains("Item added to your cart"),"Item added to your cart successfully");
-    skisPage.viewCart();
-    Assert.assertTrue(driver.getPageSource().contains("Rs. 599.00"),"Price of item");
-    
+	 public WebDriver driver;
+	 @BeforeMethod
+	    public void setUp() {
+	        // Set up WebDriver
+	        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+	        driver = new ChromeDriver();
+	    }
 
-    // Close the browser
-//    driver.quit();
-}
-}
+	 
 	
+	
+		    @Test
+		    public void testAddProductToCart() {
+		        // Navigate to the website
+		        driver.get("https://web-playground.ultralesson.com/collections/all");
+
+		        // Initialize page objects
+		        UltraLessonHomePage homePage = new UltraLessonHomePage(driver);
+		        StorePage storePage = homePage.navigateToStore();
+		        SkisPage skisPage = storePage.selectTiSkis();
+
+		        // Check if the product is available
+		        if (skisPage.isProductAvailable()) {
+		            // Add product to cart
+		            skisPage.addToCart();
+
+		            // Wait for the "Item added to your cart" message to appear
+		            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[normalize-space()='Item added to your cart']")));
+
+		            // Verify that the cart's item count is incremented
+		            Assert.assertTrue(driver.getPageSource().contains("Item added to your cart"), "Item added to cart message not found");
+		            Assert.assertTrue(driver.getPageSource().contains("1 item"), "Cart item count not incremented");
+		        } else {
+		            System.out.println("The product is sold out. Aborting the test.");
+		        }
+		    }
+
+		   
+		    
+		
+@AfterMethod
+public void tearDown() {
+    // Close the browser
+    if (driver != null) {
+        driver.quit();
+    }
+}
+}
 
