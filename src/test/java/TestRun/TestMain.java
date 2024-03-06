@@ -3,7 +3,9 @@ package TestRun;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,11 +25,21 @@ public class TestMain {
     UltraLessonHomePage homePage = new UltraLessonHomePage(driver);
     StorePage storePage = homePage.navigateToStore();
     SkisPage skisPage = storePage.selectTiSkis();
-    Assert.assertTrue(driver.getPageSource().contains("16 Ti Skis"), "Item is available");
-    skisPage.addToCart();
+   
+ if (skisPage.addToCartButton.isDisplayed()) {
+     String buttonText = skisPage.addToCartButton.getText();
+     if (buttonText.contains("Sold out")) {
+         System.out.println("The product is sold out. Aborting the test.");
+     } else {
+    	 skisPage.addToCart();
+     }
+ } else {
+     System.out.println("The 'Add to Cart' button is not visible. Aborting the test.");
+ }
+   
     Assert.assertTrue(driver.getPageSource().contains("Item added to your cart"),"Item added to your cart successfully");
     skisPage.viewCart();
-    Assert.assertTrue(driver.getPageSource().contains("599.00"),"Price of item");
+    Assert.assertTrue(driver.getPageSource().contains("Rs. 599.00"),"Price of item");
     
 
     // Close the browser

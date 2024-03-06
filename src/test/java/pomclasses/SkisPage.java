@@ -9,7 +9,7 @@ public class SkisPage {
 	private WebDriver driver;
 
     @FindBy(xpath = "//button[@name='add']")
-    private WebElement addToCartButton;
+    public WebElement addToCartButton;
 
     @FindBy(xpath = "//a[@id='cart-notification-button']")
     private WebElement viewCartButton;
