@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="browser">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/browser" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
