@@ -14,7 +14,7 @@ public class SkisPage {
     @FindBy(xpath = "//a[@id='cart-notification-button']")
     private WebElement viewCartButton;
     
-    @FindBy(xpath = "//button[@name='add']//span[contains(text(),'Sold out')]")
+    @FindBy(xpath = "//button[@name='add']")
     private WebElement soldOutMessage;
 
     public SkisPage(WebDriver driver) {
@@ -29,9 +29,9 @@ public class SkisPage {
     public void viewCart() {
         viewCartButton.click();
     }
-    public boolean isProductAvailable() {
+    public WebElement isProductAvailable() {
     	
-        return !soldOutMessage.isDisplayed();
+        return soldOutMessage;
     }
 }
 

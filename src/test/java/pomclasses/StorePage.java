@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class StorePage {
 	private WebDriver driver;
 
-    @FindBy(xpath = "//a[normalize-space()='5 Pocket Jean']")
+    @FindBy(xpath = "//a[normalize-space()='16 Ti Skis']")
     private WebElement tiSkisLink;
 
     public StorePage(WebDriver driver) {
