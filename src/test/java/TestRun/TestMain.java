@@ -69,6 +69,9 @@ public class TestMain {
 		        } else {
 		            System.out.println("The product is sold out. Aborting the test.");
 		        }
+		        
+		        cpg.removeProductFromCart();
+		        cpg.verifyCartIsEmpty();
 		    }
 
 		   
