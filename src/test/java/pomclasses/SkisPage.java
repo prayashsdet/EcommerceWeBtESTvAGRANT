@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Page Object Model representing the Skis Page.
- * This class provides methods to interact with the Skis page, such as adding a product to the cart.
+ * Represents the Skis Page of the UltraLesson website.
+ * Provides methods to interact with the skis page, such as adding products to the cart.
  */
 public class SkisPage {
     private WebDriver driver;
@@ -22,8 +22,8 @@ public class SkisPage {
     private WebElement soldOutMessage;
 
     /**
-     * Constructor for the SkisPage class.
-     * @param driver WebDriver instance
+     * Constructs a new SkisPage object.
+     * @param driver The WebDriver instance.
      */
     public SkisPage(WebDriver driver) {
         this.driver = driver;
@@ -31,23 +31,24 @@ public class SkisPage {
     }
 
     /**
-     * Adds the selected product to the shopping cart by clicking the 'Add to Cart' button.
+     * Adds the displayed product to the shopping cart.
+     * Clicks on the 'Add to Cart' button for the displayed product.
      */
- 
     public void addToCart() {
         addToCartButton.click();
     }
 
     /**
-     * Clicks the view cart button to navigate to the cart page.
+     * Navigates to the cart page by clicking on the View Cart button.
+     * @return An instance of CartPage representing the cart page.
      */
     public void viewCart() {
         viewCartButton.click();
     }
     
     /**
-     * Checks if the product is available.
-     * @return WebElement representing the sold out message if the product is unavailable, null otherwise
+     * Checks if the product is available for purchase.
+     * @return WebElement representing the sold out message if the product is unavailable, null otherwise.
      */
     public WebElement isProductAvailable() {
         return soldOutMessage;

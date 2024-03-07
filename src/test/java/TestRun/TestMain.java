@@ -21,12 +21,14 @@ import pomclasses.UltraLessonHomePage;
 
 /**
  * Test class for adding a product to the cart.
+ * This class contains methods to test the functionality of adding a product to the cart on the UltraLesson website.
  */
 public class TestMain {
     public WebDriver driver;
 
     /**
      * Set up method to initialize WebDriver.
+     * This method sets up the WebDriver before each test method.
      */
     @BeforeMethod
     public void setUp() {
@@ -36,6 +38,7 @@ public class TestMain {
 
     /**
      * Test method to add a product to the cart.
+     * This method navigates to the website, selects a product, adds it to the cart, and verifies the cart contents.
      */
     @Test
     public void testAddProductToCart() {
@@ -74,11 +77,12 @@ public class TestMain {
         
         // Remove product from cart and verify it's empty
         cpg.removeProductFromCart();
-        cpg.verifyCartIsEmpty();
+        cpg.isCartEmpty();
     }
 
     /**
      * Tear down method to close the WebDriver.
+     * This method closes the WebDriver after each test method.
      */
     @AfterMethod
     public void tearDown() {

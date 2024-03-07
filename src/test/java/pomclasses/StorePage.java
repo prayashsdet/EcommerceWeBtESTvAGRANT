@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Page Object Model representing the Store Page.
- * This class provides methods to interact with the Store page, such as selecting products.
+ * Represents the Store Page of the UltraLesson website.
+ * Provides methods to interact with the store page, such as selecting products.
  */
 public class StorePage {
     private WebDriver driver;
@@ -16,8 +16,8 @@ public class StorePage {
     private WebElement tiSkisLink;
 
     /**
-     * Constructor for the StorePage class.
-     * @param driver WebDriver instance
+     * Constructs a new StorePage object.
+     * @param driver The WebDriver instance.
      */
     public StorePage(WebDriver driver) {
         this.driver = driver;
@@ -26,8 +26,7 @@ public class StorePage {
 
     /**
      * Selects the Ti Skis product from the store.
-     * Clicks the link to navigate to the Skis Page.
-     * @return SkisPage instance
+     * @return An instance of SkisPage representing the selected product page.
      */
     public SkisPage selectTiSkis() {
         tiSkisLink.click();

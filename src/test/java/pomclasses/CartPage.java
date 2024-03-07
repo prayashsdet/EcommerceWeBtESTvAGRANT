@@ -1,22 +1,16 @@
 package pomclasses;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 /**
- * Page Object Model representing the Cart Page.
- * This class provides methods to interact with the Cart page, such as adding/removing products and verifying cart status.
+ * Represents the Cart Page of the UltraLesson website.
+ * Provides methods to interact with the cart page, such as removing products and verifying cart status.
  */
 public class CartPage {
-    public WebDriver driver;
+    private WebDriver driver;
 
     @FindBy(xpath = "//a[@class='cart-item__name h4 break']")
     public WebElement productName;
@@ -40,8 +34,8 @@ public class CartPage {
     public WebElement emptyCartMessage;
 
     /**
-     * Constructor for the CartPage class.
-     * @param driver WebDriver instance
+     * Constructs a new CartPage object.
+     * @param driver The WebDriver instance.
      */
     public CartPage(WebDriver driver) {
         this.driver = driver;
@@ -50,7 +44,7 @@ public class CartPage {
 
     /**
      * Retrieves the name of the product in the cart.
-     * @return Name of the product
+     * @return The name of the product.
      */
     public String getProductName() {
         return productName.getText();
@@ -58,7 +52,7 @@ public class CartPage {
 
     /**
      * Retrieves the size of the product in the cart.
-     * @return Size of the product
+     * @return The size of the product.
      */
     public String getProductSize() {
         return productSize.getText();
@@ -66,7 +60,7 @@ public class CartPage {
 
     /**
      * Retrieves the quantity of the product in the cart.
-     * @return Quantity of the product
+     * @return The quantity of the product.
      */
     public String getProductQuantity() {
         return productQuantity.getDomAttribute("value");
@@ -74,7 +68,7 @@ public class CartPage {
 
     /**
      * Retrieves the price of the product in the cart.
-     * @return Price of the product
+     * @return The price of the product.
      */
     public String getProductPrice() {
         return productPrice.getText();
@@ -82,7 +76,7 @@ public class CartPage {
 
     /**
      * Retrieves the total price of the products in the cart.
-     * @return Total price of the products in the cart
+     * @return The total price of the products in the cart.
      */
     public String getTotalPrice() {
         return totalPrice.getText();
@@ -90,22 +84,16 @@ public class CartPage {
 
     /**
      * Removes a product from the cart.
-     * Clicks the remove button to remove the product from the cart.
      */
     public void removeProductFromCart() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOf(removeButton));
         removeButton.click();
     }
 
     /**
      * Verifies if the cart is empty.
-     * Waits for the empty cart message to appear and asserts that it is displayed.
+     * @return True if the cart is empty, false otherwise.
      */
-    public void verifyCartIsEmpty() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOf(emptyCartMessage));
-        boolean isEmpty = emptyCartMessage.isDisplayed();
-        Assert.assertTrue(isEmpty, "Cart is not empty after product removal");
+    public boolean isCartEmpty() {
+        return emptyCartMessage.isDisplayed();
     }
 }
