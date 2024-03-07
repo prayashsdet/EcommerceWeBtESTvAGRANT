@@ -34,7 +34,7 @@ public class TestMain {
     @BeforeMethod
     public void setUp() {
         // Set up WebDriver
-    	  driver = DriverFactory.createDriver("chrome");
+    	  driver =DriverFactory.getInstance().createDriver("chrome");
     }
 
     /**
@@ -90,7 +90,7 @@ public class TestMain {
     public void tearDown() {
         // Close the browser
         if (driver != null) {
-        	 DriverFactory.quitDriver();
+        	DriverFactory.getInstance().quitDriver();
         }
     }
 }

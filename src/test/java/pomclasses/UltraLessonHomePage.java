@@ -22,7 +22,7 @@ public class UltraLessonHomePage {
      * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
     public UltraLessonHomePage() {
-        this.driver = DriverFactory.getDriver();
+        this.driver = DriverFactory.getInstance().getDriver();
         PageFactory.initElements(driver, this);
     }
 

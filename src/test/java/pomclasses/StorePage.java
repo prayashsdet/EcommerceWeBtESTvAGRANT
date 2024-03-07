@@ -22,7 +22,7 @@ public class StorePage {
      * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
     public StorePage() {
-        this.driver = DriverFactory.getDriver();
+        this.driver = DriverFactory.getInstance().getDriver();
         PageFactory.initElements(driver, this);
     }
 

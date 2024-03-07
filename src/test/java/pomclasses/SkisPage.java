@@ -28,7 +28,7 @@ public class SkisPage {
      * @param driver The WebDriver instance.
      */
     public SkisPage() {
-        this.driver = DriverFactory.getDriver();
+        this.driver = DriverFactory.getInstance().getDriver();
         PageFactory.initElements(driver, this);
     }
 

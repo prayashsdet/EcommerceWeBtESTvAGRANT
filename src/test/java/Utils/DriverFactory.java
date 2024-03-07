@@ -6,7 +6,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,16 +15,21 @@ public class DriverFactory {
     private static final String EDGE = "edge";
     private static final String REMOTE = "remote";
 
-    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
-    private static final Map<String, WebDriver> driverMap = new HashMap<>();
+    private static final ThreadLocal<DriverFactory> instanceThreadLocal = ThreadLocal.withInitial(DriverFactory::new);
+    private static final ThreadLocal<WebDriver> driverThreadLocal = ThreadLocal.withInitial(() -> null);
+    private final Map<String, WebDriver> driverMap = new HashMap<>();
 
     private DriverFactory() {}
 
-    public static WebDriver getDriver() {
+    public static DriverFactory getInstance() {
+        return instanceThreadLocal.get();
+    }
+
+    public WebDriver getDriver() {
         return driverThreadLocal.get();
     }
 
-    public static WebDriver createDriver(String browser) {
+    public WebDriver createDriver(String browser) {
         WebDriver driver;
         switch (browser.toLowerCase()) {
             case CHROME:
@@ -52,7 +56,7 @@ public class DriverFactory {
         return driver;
     }
 
-    public static void quitDriver() {
+    public void quitDriver() {
         WebDriver driver = driverThreadLocal.get();
         if (driver != null) {
             driver.quit();
@@ -61,7 +65,7 @@ public class DriverFactory {
         }
     }
 
-    private static String getBrowserType(WebDriver driver) {
+    private String getBrowserType(WebDriver driver) {
         String browserType = "Unknown";
         if (driver instanceof ChromeDriver) {
             browserType = CHROME;
