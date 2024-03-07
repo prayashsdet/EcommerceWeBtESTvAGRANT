@@ -31,9 +31,9 @@ public class SkisPage {
     }
 
     /**
-     * Adds the product to the cart.
-     * Clicks on the add to cart button for the product, if available.
+     * Adds the selected product to the shopping cart by clicking the 'Add to Cart' button.
      */
+ 
     public void addToCart() {
         addToCartButton.click();
     }
