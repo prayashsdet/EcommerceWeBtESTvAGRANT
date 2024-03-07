@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utils.DriverFactory;
+
 /**
  * Represents the Cart Page of the UltraLesson website.
  * Provides methods to interact with the cart page, such as removing products and verifying cart status.
@@ -37,8 +39,8 @@ public class CartPage {
      * Constructs a new CartPage object.
      * @param driver The WebDriver instance.
      */
-    public CartPage(WebDriver driver) {
-        this.driver = driver;
+    public CartPage() {
+        this.driver = DriverFactory.getDriver();
         PageFactory.initElements(driver, this);
     }
 

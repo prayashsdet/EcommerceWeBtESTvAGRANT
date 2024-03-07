@@ -5,9 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utils.DriverFactory;
+
 /**
  * Represents the Store Page of the UltraLesson website.
- * Provides methods to interact with the store page, such as selecting products.
+ * This class provides methods to interact with the store page, such as selecting products.
  */
 public class StorePage {
     private WebDriver driver;
@@ -17,19 +19,18 @@ public class StorePage {
 
     /**
      * Constructs a new StorePage object.
-     * @param driver The WebDriver instance.
+     * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
-    public StorePage(WebDriver driver) {
-        this.driver = driver;
+    public StorePage() {
+        this.driver = DriverFactory.getDriver();
         PageFactory.initElements(driver, this);
     }
 
     /**
      * Selects the Ti Skis product from the store.
-     * @return An instance of SkisPage representing the selected product page.
+     * Clicks on the Ti Skis link to navigate to the product page.
      */
-    public SkisPage selectTiSkis() {
+    public void selectTiSkis() {
         tiSkisLink.click();
-        return new SkisPage(driver);
     }
 }

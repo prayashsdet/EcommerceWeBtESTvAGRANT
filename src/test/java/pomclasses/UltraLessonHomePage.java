@@ -5,9 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utils.DriverFactory;
+
 /**
  * Represents the UltraLesson Home Page.
- * Provides methods to interact with the home page, such as navigating to the store.
+ * This class provides methods to interact with the home page, such as navigating to the store.
  */
 public class UltraLessonHomePage {
     private WebDriver driver;
@@ -17,19 +19,18 @@ public class UltraLessonHomePage {
 
     /**
      * Constructs a new UltraLessonHomePage object.
-     * @param driver The WebDriver instance.
+     * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
-    public UltraLessonHomePage(WebDriver driver) {
-        this.driver = driver;
+    public UltraLessonHomePage() {
+        this.driver = DriverFactory.getDriver();
         PageFactory.initElements(driver, this);
     }
 
     /**
-     * Navigates to the store page by clicking on the Store button.
-     * @return An instance of StorePage representing the store page.
+     * Navigates to the store page.
+     * Clicks on the store button to navigate to the store page.
      */
-    public StorePage navigateToStore() {
+    public void navigateToStore() {
         storeButton.click();
-        return new StorePage(driver);
     }
 }

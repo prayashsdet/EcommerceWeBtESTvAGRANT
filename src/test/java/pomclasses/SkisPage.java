@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utils.DriverFactory;
+
 /**
  * Represents the Skis Page of the UltraLesson website.
  * Provides methods to interact with the skis page, such as adding products to the cart.
@@ -25,8 +27,8 @@ public class SkisPage {
      * Constructs a new SkisPage object.
      * @param driver The WebDriver instance.
      */
-    public SkisPage(WebDriver driver) {
-        this.driver = driver;
+    public SkisPage() {
+        this.driver = DriverFactory.getDriver();
         PageFactory.initElements(driver, this);
     }
 

@@ -14,6 +14,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import Utils.DriverFactory;
 import pomclasses.CartPage;
 import pomclasses.SkisPage;
 import pomclasses.StorePage;
@@ -33,7 +34,7 @@ public class TestMain {
     @BeforeMethod
     public void setUp() {
         // Set up WebDriver
-        driver = new ChromeDriver();
+    	  driver = DriverFactory.createDriver("chrome");
     }
 
     /**
@@ -46,11 +47,12 @@ public class TestMain {
         driver.get("https://web-playground.ultralesson.com/collections/all");
 
         // Initialize page objects
-        UltraLessonHomePage homePage = new UltraLessonHomePage(driver);
-        StorePage storePage = homePage.navigateToStore();
-        SkisPage skisPage = storePage.selectTiSkis();
-        CartPage cpg = new CartPage(driver);
-
+        UltraLessonHomePage homePage = new UltraLessonHomePage();
+        StorePage storePage = new StorePage();
+        SkisPage skisPage = new SkisPage();
+        CartPage cpg = new CartPage();
+        homePage.navigateToStore();
+        storePage.selectTiSkis();
         // Check if the product is available
         if (skisPage.isProductAvailable().isEnabled()) {
             // Add product to cart
@@ -88,7 +90,7 @@ public class TestMain {
     public void tearDown() {
         // Close the browser
         if (driver != null) {
-            driver.quit();
+        	 DriverFactory.quitDriver();
         }
     }
 }
