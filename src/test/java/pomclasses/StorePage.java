@@ -6,7 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Page Object Model class representing the Store Page.
+ * Page Object Model representing the Store Page.
+ * This class provides methods to interact with the Store page, such as selecting products.
  */
 public class StorePage {
     private WebDriver driver;
@@ -24,7 +25,8 @@ public class StorePage {
     }
 
     /**
-     * Clicks the link to select Ti Skis and navigates to the Skis Page.
+     * Selects the Ti Skis product from the store.
+     * Clicks the link to navigate to the Skis Page.
      * @return SkisPage instance
      */
     public SkisPage selectTiSkis() {

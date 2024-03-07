@@ -1,11 +1,8 @@
 package pomclasses;
 
-import org.openqa.selenium.By.ByLinkText;
-
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 /**
- * Page Object Model class representing the Cart Page.
+ * Page Object Model representing the Cart Page.
+ * This class provides methods to interact with the Cart page, such as adding/removing products and verifying cart status.
  */
 public class CartPage {
     public WebDriver driver;
@@ -51,7 +49,7 @@ public class CartPage {
     }
 
     /**
-     * Get the name of the product.
+     * Retrieves the name of the product in the cart.
      * @return Name of the product
      */
     public String getProductName() {
@@ -59,7 +57,7 @@ public class CartPage {
     }
 
     /**
-     * Get the size of the product.
+     * Retrieves the size of the product in the cart.
      * @return Size of the product
      */
     public String getProductSize() {
@@ -67,7 +65,7 @@ public class CartPage {
     }
 
     /**
-     * Get the quantity of the product.
+     * Retrieves the quantity of the product in the cart.
      * @return Quantity of the product
      */
     public String getProductQuantity() {
@@ -75,7 +73,7 @@ public class CartPage {
     }
 
     /**
-     * Get the price of the product.
+     * Retrieves the price of the product in the cart.
      * @return Price of the product
      */
     public String getProductPrice() {
@@ -83,7 +81,7 @@ public class CartPage {
     }
 
     /**
-     * Get the total price of the products in the cart.
+     * Retrieves the total price of the products in the cart.
      * @return Total price of the products in the cart
      */
     public String getTotalPrice() {
@@ -91,7 +89,8 @@ public class CartPage {
     }
 
     /**
-     * Remove a product from the cart.
+     * Removes a product from the cart.
+     * Clicks the remove button to remove the product from the cart.
      */
     public void removeProductFromCart() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -100,7 +99,8 @@ public class CartPage {
     }
 
     /**
-     * Verify if the cart is empty.
+     * Verifies if the cart is empty.
+     * Waits for the empty cart message to appear and asserts that it is displayed.
      */
     public void verifyCartIsEmpty() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));

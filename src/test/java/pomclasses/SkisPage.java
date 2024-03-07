@@ -6,7 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Page Object Model class representing the Skis Page.
+ * Page Object Model representing the Skis Page.
+ * This class provides methods to interact with the Skis page, such as adding a product to the cart.
  */
 public class SkisPage {
     private WebDriver driver;
@@ -30,14 +31,15 @@ public class SkisPage {
     }
 
     /**
-     * Clicks the Add to Cart button.
+     * Adds the product to the cart.
+     * Clicks on the add to cart button for the product, if available.
      */
     public void addToCart() {
         addToCartButton.click();
     }
 
     /**
-     * Clicks the View Cart button.
+     * Clicks the view cart button to navigate to the cart page.
      */
     public void viewCart() {
         viewCartButton.click();

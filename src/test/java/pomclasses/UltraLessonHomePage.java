@@ -6,7 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Page Object Model class representing the UltraLesson Home Page.
+ * Page Object Model representing the UltraLesson Home Page.
+ * This class provides methods to interact with the UltraLesson home page, such as navigating to the store.
  */
 public class UltraLessonHomePage {
     private WebDriver driver;
@@ -24,6 +25,7 @@ public class UltraLessonHomePage {
     }
 
     /**
+     * Navigates to the store page.
      * Clicks the store button to navigate to the Store Page.
      * @return StorePage instance
      */
