@@ -12,7 +12,7 @@ public class SkisPage {
     public WebElement addToCartButton;
 
     @FindBy(xpath = "//a[@id='cart-notification-button']")
-    private WebElement viewCartButton;
+    public  WebElement viewCartButton;
     
     @FindBy(xpath = "//button[@name='add']")
     private WebElement soldOutMessage;

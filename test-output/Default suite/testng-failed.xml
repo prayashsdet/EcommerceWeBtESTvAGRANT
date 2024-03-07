@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestRun.TestMain">
+      <class name="pomclasses.Cleancart">
         <methods>
-          <include name="testAddProductToCart"/>
           <include name="setUp"/>
-          <include name="tearDown"/>
+          <include name="removeProductFromCartandVerifyifempty"/>
         </methods>
-      </class> <!-- TestRun.TestMain -->
+      </class> <!-- pomclasses.Cleancart -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

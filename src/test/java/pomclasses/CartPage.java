@@ -38,10 +38,10 @@ public class CartPage {
     
     
     @FindBy(xpath = "//button[@name='minus']")
-    private WebElement removeButton;
+    public WebElement removeButton;
 
     @FindBy(xpath = "//h1[normalize-space()='Your cart is empty']")
-    private WebElement emptyCartMessage;
+    public WebElement emptyCartMessage;
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
