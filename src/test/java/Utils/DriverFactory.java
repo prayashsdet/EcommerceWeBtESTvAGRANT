@@ -7,45 +7,51 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.util.Map;
-import java.util.HashMap;
-
 public class DriverFactory {
 
     private static volatile DriverFactory instance;
-    private final Map<Long, WebDriver> driverMap = new HashMap<>();
+    private ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
     private DriverFactory() {}
 
-    public static synchronized DriverFactory getInstance() {
+    public static DriverFactory getInstance() {
         if (instance == null) {
-            instance = new DriverFactory();
+            synchronized (DriverFactory.class) {
+                if (instance == null) {
+                    instance = new DriverFactory();
+                }
+            }
         }
         return instance;
     }
 
-    public synchronized WebDriver getDriver(String browser) {
-        long threadId = Thread.currentThread().getId();
-        if (!driverMap.containsKey(threadId)) {
-            WebDriver driver = createDriver(browser);
-            driverMap.put(threadId, driver);
+    public WebDriver getDriver() {
+        if (drivers.get() == null) {
+            throw new IllegalStateException("WebDriver instance not initialized. Call setDriver method first.");
         }
-        return driverMap.get(threadId);
+        return drivers.get();
     }
 
-    public synchronized void quitDriver() {
-        long threadId = Thread.currentThread().getId();
-        if (driverMap.containsKey(threadId)) {
-            WebDriver driver = driverMap.get(threadId);
-            if (driver != null) {
-                try {
-                    driver.quit();
-                } catch (Exception e) {
-                    System.err.println("Error while quitting WebDriver instance: " + e.getMessage());
-                } finally {
-                    driverMap.remove(threadId);
-                }
+    public void setDriver(String browser) {
+        if (drivers.get() != null) {
+            throw new IllegalStateException("WebDriver instance already initialized. Quit the current driver first.");
+        }
+        WebDriver driver = createDriver(browser);
+        drivers.set(driver);
+    }
+
+    public void quitDriver() {
+        WebDriver driver = drivers.get();
+        if (driver != null) {
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                System.err.println("Error while quitting WebDriver instance: " + e.getMessage());
+            } finally {
+                drivers.remove(); // Remove the WebDriver instance from the thread local storage
             }
+        } else {
+            System.out.println("WebDriver instance already quit or not initialized.");
         }
     }
 
