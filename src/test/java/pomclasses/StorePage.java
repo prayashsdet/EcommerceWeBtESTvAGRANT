@@ -21,8 +21,8 @@ public class StorePage {
      * Constructs a new StorePage object.
      * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
-    public StorePage() {
-        this.driver = DriverFactory.getInstance().getDriver();
+    public StorePage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

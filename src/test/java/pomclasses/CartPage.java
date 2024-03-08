@@ -39,8 +39,8 @@ public class CartPage {
      * Constructs a new CartPage object.
      * @param driver The WebDriver instance.
      */
-    public CartPage() {
-        this.driver = DriverFactory.getInstance().getDriver();
+    public CartPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

@@ -25,8 +25,8 @@ import pomclasses.UltraLessonHomePage;
  * This class contains methods to test the functionality of adding a product to the cart on the UltraLesson website.
  */
 public class TestMain {
-    public WebDriver driver;
-
+	private WebDriver driver;
+    private DriverFactory driverFactory;
     /**
      * Set up method to initialize WebDriver.
      * This method sets up the WebDriver before each test method.
@@ -34,7 +34,11 @@ public class TestMain {
     @BeforeMethod
     public void setUp() {
         // Set up WebDriver
-    	  driver =DriverFactory.getInstance().createDriver("chrome");
+    	  driverFactory = DriverFactory.getInstance();
+
+          // Get WebDriver instance from DriverFactory
+          driver = driverFactory.getDriver("chrome");
+          driver.manage().window().maximize();
     }
 
     /**
@@ -47,11 +51,11 @@ public class TestMain {
         driver.get("https://web-playground.ultralesson.com/collections/all");
 
         // Initialize page objects
-        UltraLessonHomePage homePage = new UltraLessonHomePage();
-        StorePage storePage = new StorePage();
-        SkisPage skisPage = new SkisPage();
-        CartPage cpg = new CartPage();
-        homePage.navigateToStore();
+        UltraLessonHomePage homePage = new UltraLessonHomePage(driver);
+        StorePage storePage = new StorePage(driver);
+        SkisPage skisPage = new SkisPage(driver);
+        CartPage cpg = new CartPage(driver);
+        homePage.clickOnStorePageLink();
         storePage.selectTiSkis();
         // Check if the product is available
         if (skisPage.isProductAvailable().isEnabled()) {
@@ -89,8 +93,10 @@ public class TestMain {
     @AfterMethod
     public void tearDown() {
         // Close the browser
-        if (driver != null) {
-        	DriverFactory.getInstance().quitDriver();
+    	 if (driver != null) {
+             // Quit WebDriver and remove from DriverFactory
+             driver.quit();
+             driverFactory.quitDriver("chrome");
         }
     }
 }

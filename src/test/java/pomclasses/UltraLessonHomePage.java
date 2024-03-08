@@ -21,8 +21,8 @@ public class UltraLessonHomePage {
      * Constructs a new UltraLessonHomePage object.
      * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
-    public UltraLessonHomePage() {
-        this.driver = DriverFactory.getInstance().getDriver();
+    public UltraLessonHomePage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -30,7 +30,7 @@ public class UltraLessonHomePage {
      * Navigates to the store page.
      * Clicks on the store button to navigate to the store page.
      */
-    public void navigateToStore() {
+    public void clickOnStorePageLink() {
         storeButton.click();
     }
 }

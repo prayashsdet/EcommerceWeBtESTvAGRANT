@@ -27,8 +27,8 @@ public class SkisPage {
      * Constructs a new SkisPage object.
      * @param driver The WebDriver instance.
      */
-    public SkisPage() {
-        this.driver = DriverFactory.getInstance().getDriver();
+    public SkisPage(WebDriver driver) {
+        this.driver = driver;;
         PageFactory.initElements(driver, this);
     }
 
