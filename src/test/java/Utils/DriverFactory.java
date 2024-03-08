@@ -16,13 +16,9 @@ public class DriverFactory {
 
     private DriverFactory() {}
 
-    public static DriverFactory getInstance() {
+    public static synchronized DriverFactory getInstance() {
         if (instance == null) {
-            synchronized (DriverFactory.class) {
-                if (instance == null) {
-                    instance = new DriverFactory();
-                }
-            }
+            instance = new DriverFactory();
         }
         return instance;
     }
