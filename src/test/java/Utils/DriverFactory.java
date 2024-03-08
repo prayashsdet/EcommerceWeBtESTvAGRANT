@@ -7,12 +7,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class DriverFactory {
-    private static volatile DriverFactory instance;
-    private final Map<String, WebDriver> driverMap = new HashMap<>();
+    private static volatile DriverFactory instance = null;
+    private ThreadLocal<WebDriver> driverThread = ThreadLocal.withInitial(() -> null);
 
     private DriverFactory() {}
 
@@ -24,36 +21,36 @@ public class DriverFactory {
     }
 
     public WebDriver getDriver(String browser) {
-        WebDriver driver;
-        switch (browser.toLowerCase()) {
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-            case "firefox":
-                driver = new FirefoxDriver();
-                break;
-            case "edge":
-                driver = new EdgeDriver();
-                break;
-            case "remote":
-                // Example of setting up a RemoteWebDriver
-                // Replace "remoteUrl" with your actual RemoteWebDriver URL
-                String remoteUrl = "http://localhost:4444/wd/hub";
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                driver = new RemoteWebDriver(capabilities);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid browser type: " + browser);
+        if (driverThread.get() == null) {
+            switch (browser.toLowerCase()) {
+                case "chrome":
+                    driverThread.set(new ChromeDriver());
+                    break;
+                case "firefox":
+                    driverThread.set(new FirefoxDriver());
+                    break;
+                case "edge":
+                    driverThread.set(new EdgeDriver());
+                    break;
+                case "remote":
+                    // Example of setting up a RemoteWebDriver
+                    // Replace "remoteUrl" with your actual RemoteWebDriver URL
+                    String remoteUrl = "http://localhost:4444/wd/hub";
+                    DesiredCapabilities capabilities = new DesiredCapabilities();
+                    driverThread.set(new RemoteWebDriver(capabilities));
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid browser type: " + browser);
+            }
         }
-        driverMap.put(browser, driver);
-        return driver;
+        return driverThread.get();
     }
 
-    public void quitDriver(String browser) {
-        WebDriver driver = driverMap.get(browser);
+    public void quitDriver() {
+        WebDriver driver = driverThread.get();
         if (driver != null) {
             driver.quit();
-            driverMap.remove(browser);
+            driverThread.remove();
         }
     }
 }
