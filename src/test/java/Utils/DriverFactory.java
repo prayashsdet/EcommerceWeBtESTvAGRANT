@@ -8,8 +8,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverFactory {
+
     private static volatile DriverFactory instance;
-    private ThreadLocal<WebDriver> drivers = ThreadLocal.withInitial(() -> null);
+    private ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
     private DriverFactory() {}
 
@@ -25,6 +26,9 @@ public class DriverFactory {
     }
 
     public WebDriver getDriver() {
+        if (drivers.get() == null) {
+            throw new IllegalStateException("WebDriver instance not initialized. Call setDriver method first.");
+        }
         return drivers.get();
     }
 

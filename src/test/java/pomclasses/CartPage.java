@@ -15,7 +15,7 @@ public class CartPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//a[@class='cart-item__name h4 break']")
-    public WebElement productName;
+    private WebElement productName;
 
     @FindBy(xpath = "//dd[normalize-space()='163cm']")
     private WebElement productSize;
@@ -30,10 +30,10 @@ public class CartPage {
     private WebElement totalPrice;
 
     @FindBy(xpath = "//button[@name='minus']")
-    public WebElement removeButton;
+    private WebElement removeButton;
 
     @FindBy(xpath = "//h1[normalize-space()='Your cart is empty']")
-    public WebElement emptyCartMessage;
+    private WebElement emptyCartMessage;
 
     /**
      * Constructs a new CartPage object.

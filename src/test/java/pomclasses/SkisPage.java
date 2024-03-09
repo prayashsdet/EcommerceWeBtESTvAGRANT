@@ -15,10 +15,10 @@ public class SkisPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//button[@name='add']")
-    public WebElement addToCartButton;
+    private WebElement addToCartButton;
 
     @FindBy(xpath = "//a[@id='cart-notification-button']")
-    public WebElement viewCartButton;
+    private WebElement viewCartButton;
     
     @FindBy(xpath = "//button[@name='add']")
     private WebElement soldOutMessage;

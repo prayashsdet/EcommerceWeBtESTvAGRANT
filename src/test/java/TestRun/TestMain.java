@@ -37,7 +37,8 @@ public class TestMain {
     	  driverFactory = DriverFactory.getInstance();
 
           // Get WebDriver instance from DriverFactory
-          driver = driverFactory.getDriver("chrome");
+          driverFactory.setDriver("chrome");
+          driver=driverFactory.getDriver();
           driver.manage().window().maximize();
     }
 
@@ -71,7 +72,7 @@ public class TestMain {
             skisPage.viewCart();
             Assert.assertEquals(cpg.getProductName(), "16 Ti Skis");
             Assert.assertEquals(cpg.getProductSize(), "163cm");
-            System.out.println(cpg.productQuantity.getText());
+//            System.out.println(cpg.productQuantity.getText());
             Assert.assertEquals(cpg.getProductQuantity(), "1");
 
             // Verify price and total
@@ -96,7 +97,7 @@ public class TestMain {
     	 if (driver != null) {
              // Quit WebDriver and remove from DriverFactory
              driver.quit();
-             driverFactory.quitDriver("chrome");
+             driverFactory.quitDriver();
         }
     }
 }
