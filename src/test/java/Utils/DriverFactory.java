@@ -9,21 +9,17 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverFactory {
 
-    private static volatile DriverFactory instance;
+	 private static ThreadLocal<DriverFactory> instance = new ThreadLocal<>();
     private ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
     private DriverFactory() {}
 
     public static DriverFactory getInstance() {
-        if (instance == null) {
-            synchronized (DriverFactory.class) {
-                if (instance == null) {
-                    instance = new DriverFactory();
-                }
-            }
-        }
-        return instance;
-    }
+    	 if (instance.get() == null) {
+             instance.set(new DriverFactory());
+         }
+         return instance.get();
+     }
 
     public WebDriver getDriver() {
         if (drivers.get() == null) {
@@ -33,18 +29,18 @@ public class DriverFactory {
     }
 
     public void setDriver(String browser) {
-        if (drivers.get() != null) {
-            throw new IllegalStateException("WebDriver instance already initialized. Quit the current driver first.");
-        }
+    	if (drivers.get() == null) {
         WebDriver driver = createDriver(browser);
         drivers.set(driver);
     }
+    }
 
     public void quitDriver() {
-        WebDriver driver = drivers.get();
-        if (driver != null) {
+        
+        if (drivers.get() != null) {
             try {
-                driver.quit();
+                drivers.get().quit();
+                drivers.remove();
             } catch (Exception e) {
                 System.err.println("Error while quitting WebDriver instance: " + e.getMessage());
             } finally {
