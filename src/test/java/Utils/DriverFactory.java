@@ -52,7 +52,7 @@ public class DriverFactory {
     }
     private WebDriver createDriver(String browser) {
         WebDriver driver;
-        WebDriverFactory factory = new WebDriverFactory(); // Instantiate the factory
+        WebDriverManager factory = new WebDriverManager(); // Instantiate the factory
         driver = factory.create(browser); // Delegate browser creation to the factory
         return driver;
     }

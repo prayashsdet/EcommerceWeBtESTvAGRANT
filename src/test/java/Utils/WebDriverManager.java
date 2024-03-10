@@ -2,7 +2,7 @@ package Utils;
 
 import org.openqa.selenium.WebDriver;
 
-public class WebDriverFactory {
+public class WebDriverManager {
     public WebDriver create(String type) {
         WebDriverBuilder builder;
         switch (type.toLowerCase()) {
