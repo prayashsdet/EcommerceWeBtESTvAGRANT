@@ -50,29 +50,11 @@ public class DriverFactory {
             System.out.println("WebDriver instance already quit or not initialized.");
         }
     }
-
     private WebDriver createDriver(String browser) {
         WebDriver driver;
-        switch (browser.toLowerCase()) {
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-            case "firefox":
-                driver = new FirefoxDriver();
-                break;
-            case "edge":
-                driver = new EdgeDriver();
-                break;
-            case "remote":
-                // Example of setting up a RemoteWebDriver
-                // Replace "remoteUrl" with your actual RemoteWebDriver URL
-                String remoteUrl = "http://localhost:4444/wd/hub";
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                driver = new RemoteWebDriver(capabilities);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid browser type: " + browser);
-        }
+        WebDriverFactory factory = new WebDriverFactory(); // Instantiate the factory
+        driver = factory.create(browser); // Delegate browser creation to the factory
         return driver;
     }
+
 }
