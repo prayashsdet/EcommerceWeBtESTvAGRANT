@@ -9,9 +9,9 @@ public class ChromeDriverBuilder implements WebDriverBuilder {
 
     @Override
     public WebDriverBuilder setHeadless(boolean headless) {
-    	 if (headless) {
-             options.addArguments("--headless");
-         }
+//    	 if (headless) {
+//             options.addArguments("--headless");
+//         }
          return this;
      }
 
@@ -19,9 +19,9 @@ public class ChromeDriverBuilder implements WebDriverBuilder {
 
     @Override
     public WebDriverBuilder setIncognito(boolean incognito) {
-    	  if (incognito) {
-              options.addArguments("--incognito");
-          }
+//    	  if (incognito) {
+//              options.addArguments("--incognito");
+//          }
           return this;
       }
 

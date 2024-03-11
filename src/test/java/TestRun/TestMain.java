@@ -38,7 +38,7 @@ public class TestMain {
 //    	  driverFactory = DriverFactory.getInstance();
     	WebDriverManager wbd = new WebDriverManager();
           // Get WebDriver instance from DriverFactory
-          driver =wbd.create("chrome");
+          driver =wbd.create("chrome",true,false);
           driver.manage().window().maximize();
     }
 

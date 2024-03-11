@@ -10,9 +10,7 @@ public class FirefoxDriverBuilder implements WebDriverBuilder {
 
     @Override
     public WebDriverBuilder setHeadless(boolean headless) {
-        if (headless) {
-            options.addArguments("-headless");
-        }
+     
         return this;
     }
 
