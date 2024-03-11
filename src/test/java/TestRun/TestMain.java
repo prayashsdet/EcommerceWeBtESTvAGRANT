@@ -1,12 +1,19 @@
 package TestRun;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -14,7 +21,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import Utils.DriverFactory;
+
+import Utils.WebDriverManager;
 import pomclasses.CartPage;
 import pomclasses.SkisPage;
 import pomclasses.StorePage;
@@ -26,19 +34,30 @@ import pomclasses.UltraLessonHomePage;
  */
 public class TestMain {
 	private WebDriver driver;
-    private DriverFactory driverFactory;
+//    private DriverFactory driverFactory;
     /**
      * Set up method to initialize WebDriver.
      * This method sets up the WebDriver before each test method.
      */
-    @BeforeMethod
+   
+	@BeforeMethod
     public void setUp() {
         // Set up WebDriver
-    	  driverFactory = DriverFactory.getInstance();
+//    	  driverFactory = DriverFactory.getInstance();
+//
+//          // Get WebDriver instance from DriverFactory
+//          driverFactory.setDriver("chrome");
+//          driver=driverFactory.getDriver();
+    	 DesiredCapabilities capabilities = new DesiredCapabilities();
 
-          // Get WebDriver instance from DriverFactory
-          driverFactory.setDriver("chrome");
-          driver=driverFactory.getDriver();
+    	    // Set desired capabilities for Chrome browser
+    	    ChromeOptions chromeOptions = new ChromeOptions();
+    	    capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
+    	    WebDriverManager builder = new WebDriverManager()
+    	            .withOptions(capabilities)
+    	            .create("chrome");
+    	    driver = builder.build();
           driver.manage().window().maximize();
     }
 
@@ -72,7 +91,7 @@ public class TestMain {
             skisPage.viewCart();
             Assert.assertEquals(cpg.getProductName(), "16 Ti Skis");
             Assert.assertEquals(cpg.getProductSize(), "163cm");
-//            System.out.println(cpg.productQuantity.getText());
+            // System.out.println(cpg.productQuantity.getText());
             Assert.assertEquals(cpg.getProductQuantity(), "1");
 
             // Verify price and total
@@ -91,13 +110,14 @@ public class TestMain {
      * Tear down method to close the WebDriver.
      * This method closes the WebDriver after each test method.
      */
-    @AfterMethod
+  
+	@AfterMethod
     public void tearDown() {
         // Close the browser
     	 if (driver != null) {
              // Quit WebDriver and remove from DriverFactory
              driver.quit();
-             driverFactory.quitDriver();
+             
         }
     }
 }

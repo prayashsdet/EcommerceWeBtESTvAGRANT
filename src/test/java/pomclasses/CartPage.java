@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import Utils.DriverFactory;
+//import Utils.DriverFactory;
 
 /**
  * Represents the Cart Page of the UltraLesson website.
