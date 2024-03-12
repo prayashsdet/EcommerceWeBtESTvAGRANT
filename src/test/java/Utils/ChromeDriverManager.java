@@ -13,7 +13,9 @@ public class ChromeDriverManager implements  WebDriverBuilder{
 	        options.addArguments("--incognito");
 	    }
 
-	   
+	    public ChromeOptions getOptions() {
+	        return options;
+	    }
 	     
 	    
 

@@ -43,7 +43,14 @@ public class TestMain {
 
          driver = WebDriverManager.getDriver("chrome");
           driver.manage().window().maximize();
-    }
+          Assert.assertNotNull(driver);
+          ChromeDriverManager chromeDriverManager = new ChromeDriverManager();
+          ChromeOptions chromeOptions = chromeDriverManager.getOptions();
+          Assert.assertEquals(chromeOptions.getBrowserName(),"chrome");
+          chromeOptions.getCapabilityNames().contains("--incognito");
+          
+      }
+    
 
     /**
      * Test method to add a product to the cart.

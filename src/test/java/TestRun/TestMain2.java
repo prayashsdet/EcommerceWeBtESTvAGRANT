@@ -32,6 +32,8 @@ public class TestMain2 {
 	
          driver = WebDriverManager.getDriver("firefox");
           driver.manage().window().maximize();
+          
+          Assert.assertNotNull(driver);
               
 //          driver.manage().window().maximize();
     }
