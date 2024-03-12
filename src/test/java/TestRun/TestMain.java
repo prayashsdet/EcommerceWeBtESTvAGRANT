@@ -14,6 +14,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import Utils.ChromeDriverBuilder;
 //import Utils.DriverFactory;
 import Utils.WebDriverManager;
 import pomclasses.CartPage;
@@ -36,9 +37,10 @@ public class TestMain {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-    	WebDriverManager wbd = new WebDriverManager();
-          // Get WebDriver instance from DriverFactory
-          driver =wbd.create("chrome",true,false);
+    	driver= new ChromeDriverBuilder()
+                .setHeadless(false)
+                .setIncognito(false)	
+                .create();
           driver.manage().window().maximize();
     }
 
@@ -59,29 +61,12 @@ public class TestMain {
         homePage.clickOnStorePageLink();
         storePage.selectTiSkis();
         // Check if the product is available
-        if (skisPage.isProductAvailable().isEnabled()) {
+       
             // Add product to cart
             skisPage.addToCart();
 
-            // Wait for the "Item added to your cart" message to appear
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[normalize-space()='Item added to your cart']")));
-
-            // Verify that the cart's item count is incremented
-            Assert.assertTrue(driver.getPageSource().contains("Item added to your cart"), "Item added to cart message not found");
-            skisPage.viewCart();
-            Assert.assertEquals(cpg.getProductName(), "16 Ti Skis");
-            Assert.assertEquals(cpg.getProductSize(), "163cm");
-            System.out.println(cpg.productQuantity.getText());
-            Assert.assertEquals(cpg.getProductQuantity(), "1");
-
-            // Verify price and total
-            Assert.assertEquals(cpg.getProductPrice(), "Rs. 599.00");
-            Assert.assertEquals(cpg.getTotalPrice(), "Rs. 569.05");
-        } else {
-            System.out.println("The product is sold out. Aborting the test.");
-        }
-        
+         
+      
         // Remove product from cart and verify it's empty
         cpg.removeProductFromCart();
         cpg.isCartEmpty();

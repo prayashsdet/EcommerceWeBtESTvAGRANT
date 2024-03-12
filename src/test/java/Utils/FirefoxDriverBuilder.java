@@ -5,23 +5,34 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 
-public class FirefoxDriverBuilder implements WebDriverBuilder {
-    private FirefoxOptions options = new FirefoxOptions();
+public class FirefoxDriverBuilder extends WebDriverManager {
+    
 
-    @Override
-    public WebDriverBuilder setHeadless(boolean headless) {
-     
+    private FirefoxOptions firefoxOptions;
+   
+
+    public FirefoxDriverBuilder() {
+        firefoxOptions = new FirefoxOptions();
+        
+    }
+
+    public FirefoxDriverBuilder setHeadless(boolean headless) {
+        if (headless) {
+            firefoxOptions.addArguments("--headless");
+           
+        }
         return this;
     }
 
-    @Override
-    public WebDriverBuilder setIncognito(boolean incognito) {
-        // Firefox does not support incognito mode
+    public FirefoxDriverBuilder setIncognito(boolean incognito) {
+        if (incognito) {
+            firefoxOptions.addArguments("-private");
+            // Edge does not support incognito mode
+        }
         return this;
     }
 
-    @Override
-    public WebDriver build() {
-        return new FirefoxDriver(options);
+    public WebDriver create() {
+        return new FirefoxDriver(firefoxOptions);
     }
 }
