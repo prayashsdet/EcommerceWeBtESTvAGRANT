@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import Utils.ChromeDriverManager;
 import Utils.EdgeDriverManage;
 import Utils.FirefoxDriverManager;
+import Utils.WebDriverManager;
 import pomclasses.CartPage;
 import pomclasses.SkisPage;
 import pomclasses.StorePage;
@@ -26,10 +27,12 @@ public class TestMain2 {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-		driver= new FirefoxDriverManager()
-                .setHeadless(false)
-                .setIncognito(true)	
-                .create();
+		 WebDriverManager.initialize("firefox");
+         // Example initialization for Firefox: WebDriverManager.initialize("firefox");
+         // Example initialization for Edge: WebDriverManager.initialize("edge");
+         // Retrieve the WebDriver instance
+         driver = WebDriverManager.getFirefoxDriver();
+              
           driver.manage().window().maximize();
     }
 	@Test

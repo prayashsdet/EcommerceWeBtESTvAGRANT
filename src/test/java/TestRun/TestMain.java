@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 import Utils.ChromeDriverManager;
 //import Utils.DriverFactory;
-import Utils.WebDriverBuilder;
+import Utils.WebDriverManager;
 import pomclasses.CartPage;
 import pomclasses.SkisPage;
 import pomclasses.StorePage;
@@ -37,10 +37,12 @@ public class TestMain {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-    	driver= new ChromeDriverManager()
-                .setHeadless(false)
-                .setIncognito(false)	
-                .create();
+    	 WebDriverManager.initialize("chrome");
+         // Example initialization for Firefox: WebDriverManager.initialize("firefox");
+         // Example initialization for Edge: WebDriverManager.initialize("edge");
+         // Retrieve the WebDriver instance
+         driver = WebDriverManager.getChromeDriver();
+              
           driver.manage().window().maximize();
     }
 

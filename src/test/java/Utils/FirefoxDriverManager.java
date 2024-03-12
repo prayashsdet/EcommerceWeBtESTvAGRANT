@@ -5,7 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 
-public class FirefoxDriverManager extends WebDriverBuilder {
+public class FirefoxDriverManager  {
     
 
     private FirefoxOptions firefoxOptions;
@@ -16,23 +16,23 @@ public class FirefoxDriverManager extends WebDriverBuilder {
         
     }
 
-    public FirefoxDriverManager setHeadless(boolean headless) {
-        if (headless) {
-            firefoxOptions.addArguments("--headless");
-           
-        }
-        return this;
+    public FirefoxOptions setHeadless() {
+        
+           return firefoxOptions.addArguments("--headless");
     }
+        
+          
+        
 
-    public FirefoxDriverManager setIncognito(boolean incognito) {
-        if (incognito) {
-            firefoxOptions.addArguments("-private");
+    public FirefoxOptions setIncognito() {
+      
+          return   firefoxOptions.addArguments("-private");
             // Edge does not support incognito mode
-        }
-        return this;
     }
+        
+       
 
-    public WebDriver create() {
+    public WebDriver getFirefoxdriver() {
         return new FirefoxDriver(firefoxOptions);
     }
 }

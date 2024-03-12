@@ -4,35 +4,35 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class ChromeDriverManager extends WebDriverBuilder {
+public class ChromeDriverManager {
 	 private ChromeOptions options;
 
 	    public ChromeDriverManager() {
 	        options = new ChromeOptions();
 	    }
 
-	    public ChromeDriverManager setHeadless(boolean headless) {
-	    	 if (headless) {
-	             options.addArguments("--headless");
+	    public ChromeOptions setHeadless() {
+	   
+	          return   options.addArguments("--headless");
 	         }
-	         return this;
-	     }
+	         
 
-	    public ChromeDriverManager setIncognito(boolean incognito) {
-	    	 if (incognito) {
-	             options.addArguments("--incognito");
-	         }
-	        return this;
+	    public ChromeOptions setIncognito() {
+	    	
+	          return   options.addArguments("--incognito");
+	         
 	    }
+	     
+	    
 
-	    public ChromeDriverManager addArgument(String argument) {
-	        options.addArguments(argument);
-	        return this;
+	    public ChromeOptions addArgument(String argument) {
+	       return options.addArguments(argument);
+	     
 	    }
 
 	 
 
-	    public WebDriver create() {
+	    public WebDriver getChromeDriver() {
 	        return new ChromeDriver(options);
 	    }
 	}
