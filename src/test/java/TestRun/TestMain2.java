@@ -27,7 +27,7 @@ public class TestMain2 {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-		 WebDriverManager.initialize("firefox");
+	driver=	 WebDriverManager.getDriver("firefox");
          // Example initialization for Firefox: WebDriverManager.initialize("firefox");
          // Example initialization for Edge: WebDriverManager.initialize("edge");
          // Retrieve the WebDriver instance

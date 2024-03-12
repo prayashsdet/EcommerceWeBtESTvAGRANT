@@ -14,9 +14,9 @@ public abstract class WebDriverManager {
      * @return a WebDriver instance
      * @throws IllegalArgumentException if the browser type is not supported
      */
-    public static WebDriver initialize(String browserName) {
+	public static WebDriver getDriver(String browserType) {
         WebDriver driver;
-        switch (browserName.toLowerCase()) {
+        switch (browserType) {
             case "chrome":
                 driver = new ChromeDriverManager().getChromeDriver();
                 break;
@@ -27,8 +27,9 @@ public abstract class WebDriverManager {
                 driver = new EdgeDriverManage().getEdgeDriver();
                 break;
             default:
-                throw new IllegalArgumentException("Browser type not supported: " + browserName);
+                throw new IllegalArgumentException("Browser type not supported: " + browserType);
         }
         return driver;
+    
     }
 }

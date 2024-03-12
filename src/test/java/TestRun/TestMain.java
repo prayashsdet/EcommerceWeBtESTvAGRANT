@@ -37,7 +37,7 @@ public class TestMain {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-    	 WebDriverManager.initialize("chrome");
+    driver=	 WebDriverManager.getDriver("chrome");
          // Example initialization for Firefox: WebDriverManager.initialize("firefox");
          // Example initialization for Edge: WebDriverManager.initialize("edge");
          // Retrieve the WebDriver instance
@@ -66,6 +66,7 @@ public class TestMain {
        
             // Add product to cart
             skisPage.addToCart();
+            skisPage.viewCart();
 
          
       
