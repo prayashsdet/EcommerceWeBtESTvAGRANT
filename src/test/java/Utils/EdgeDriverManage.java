@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
-public class EdgeDriverManage  {
+public class EdgeDriverManage  implements WebDriverBuilder {
 	
 	   
 	    private EdgeOptions edgeOptions;
@@ -29,7 +29,7 @@ public class EdgeDriverManage  {
 
 	 
 
-	    public WebDriver getEdgeDriver() {
+	    public WebDriver getWebDriver() {
 	        return new EdgeDriver(edgeOptions);
 	    }
 	}

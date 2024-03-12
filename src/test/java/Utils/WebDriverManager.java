@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Factory class for creating WebDriver instances based on the specified browser name.
  */
-public abstract class WebDriverManager {
+public class WebDriverManager {
     
     /**
      * Initializes and returns a WebDriver instance for the specified browser.
@@ -15,21 +15,21 @@ public abstract class WebDriverManager {
      * @throws IllegalArgumentException if the browser type is not supported
      */
 	public static WebDriver getDriver(String browserType) {
-        WebDriver driver;
+       
+        WebDriverBuilder builder;
         switch (browserType) {
             case "chrome":
-                driver = new ChromeDriverManager().getChromeDriver();
+            	builder = new ChromeDriverManager();
                 break;
             case "firefox":
-                driver = new FirefoxDriverManager().getFirefoxdriver();
+            	builder = new FirefoxDriverManager();
                 break;
             case "edge":
-                driver = new EdgeDriverManage().getEdgeDriver();
+            	builder = new EdgeDriverManage();
                 break;
             default:
                 throw new IllegalArgumentException("Browser type not supported: " + browserType);
         }
-        return driver;
-    
+        return builder.getWebDriver();
     }
 }

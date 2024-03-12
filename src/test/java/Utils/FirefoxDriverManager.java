@@ -5,7 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 
-public class FirefoxDriverManager  {
+public class FirefoxDriverManager  implements WebDriverBuilder {
     
 
     private FirefoxOptions firefoxOptions;
@@ -32,7 +32,7 @@ public class FirefoxDriverManager  {
         
        
 
-    public WebDriver getFirefoxdriver() {
+    public WebDriver getWebDriver() {
         return new FirefoxDriver(firefoxOptions);
     }
 }

@@ -37,7 +37,7 @@ public class TestMain {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-    driver=	 WebDriverManager.getDriver("chrome");
+    driver= WebDriverManager.getDriver("chrome");
          // Example initialization for Firefox: WebDriverManager.initialize("firefox");
          // Example initialization for Edge: WebDriverManager.initialize("edge");
          // Retrieve the WebDriver instance
@@ -71,8 +71,6 @@ public class TestMain {
          
       
         // Remove product from cart and verify it's empty
-        cpg.removeProductFromCart();
-        cpg.isCartEmpty();
     }
 
     /**

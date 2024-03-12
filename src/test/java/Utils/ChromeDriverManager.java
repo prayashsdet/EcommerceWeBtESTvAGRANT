@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class ChromeDriverManager {
+public class ChromeDriverManager implements  WebDriverBuilder{
 	 private ChromeOptions options;
 
 	    public ChromeDriverManager() {
@@ -32,7 +32,7 @@ public class ChromeDriverManager {
 
 	 
 
-	    public WebDriver getChromeDriver() {
+	    public WebDriver getWebDriver() {
 	        return new ChromeDriver(options);
 	    }
 	}
