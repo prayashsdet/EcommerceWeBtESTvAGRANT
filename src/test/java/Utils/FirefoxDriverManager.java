@@ -9,13 +9,12 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class FirefoxDriverManager  implements WebDriverBuilder {
     
 
-    private FirefoxOptions firefoxOptions;
-    private Object options;
-
-   
+    private FirefoxOptions options;
+  
 
     public FirefoxDriverManager() {
-        firefoxOptions = (FirefoxOptions)options;
+       options = new FirefoxOptions();
+        options.addArguments("--headless");
         
     }
 
@@ -35,7 +34,7 @@ public class FirefoxDriverManager  implements WebDriverBuilder {
         
        
 
-    public WebDriver createDriver( Object options) {
-        return new FirefoxDriver(firefoxOptions);
+    public WebDriver createDriver() {
+        return new FirefoxDriver(options);
     }
 }

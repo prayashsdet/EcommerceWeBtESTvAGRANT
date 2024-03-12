@@ -38,9 +38,10 @@ public class TestMain {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-    	
+//    	 ChromeOptions chromeOptions = new ChromeOptions();
+//         chromeOptions.addArguments("--incognito");
 
-         driver = WebDriverManager.getDriver("chrome", new ChromeOptions().addArguments("--incognito"));
+         driver = WebDriverManager.getDriver("chrome");
           driver.manage().window().maximize();
     }
 

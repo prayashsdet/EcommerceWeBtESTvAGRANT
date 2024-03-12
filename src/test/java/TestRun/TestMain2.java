@@ -30,10 +30,10 @@ public class TestMain2 {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
 	
-         driver = WebDriverManager.getDriver("chrome",new FirefoxOptions().addArguments("--disable-popup-blocking"));
+         driver = WebDriverManager.getDriver("firefox");
           driver.manage().window().maximize();
               
-          driver.manage().window().maximize();
+//          driver.manage().window().maximize();
     }
 	@Test
 	public void verifyincrementcount() {

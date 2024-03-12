@@ -2,6 +2,8 @@ package Utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 /**
  * Factory class for creating WebDriver instances based on the specified browser name.
@@ -30,7 +32,7 @@ public class WebDriverManager {
      * @return a WebDriver instance
      * @throws IllegalArgumentException if the browser type is not supported
      */
-	public static WebDriver getDriver(String browserType,Object options) {
+	public static WebDriver getDriver(String browserType) {
        
         WebDriverBuilder builder;
         switch (browserType) {
@@ -46,6 +48,16 @@ public class WebDriverManager {
             default:
                 throw new IllegalArgumentException("Browser type not supported: " + browserType);
         }
-        return builder.createDriver(options);
-    }
+        
+//        if (options != null) {
+//            if (builder instanceof ChromeDriverManager && options instanceof ChromeOptions) {
+//                ((ChromeDriverManager) builder).setOptions((ChromeOptions) options);
+////            } else if (builder instanceof FirefoxDriverManager && options instanceof FirefoxOptions) {
+////                ((FirefoxDriverManager) builder).setOptions((FirefoxOptions) options);
+//            }
+//        }
+        return builder.createDriver();
+    
 }
+	}
+
