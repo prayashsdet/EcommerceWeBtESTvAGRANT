@@ -10,9 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import Utils.ChromeDriverBuilder;
-import Utils.EdgeDriverBuilder;
-import Utils.FirefoxDriverBuilder;
+import Utils.ChromeDriverManager;
+import Utils.EdgeDriverManage;
+import Utils.FirefoxDriverManager;
 import pomclasses.CartPage;
 import pomclasses.SkisPage;
 import pomclasses.StorePage;
@@ -26,7 +26,7 @@ public class TestMain2 {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-		driver= new FirefoxDriverBuilder()
+		driver= new FirefoxDriverManager()
                 .setHeadless(false)
                 .setIncognito(true)	
                 .create();

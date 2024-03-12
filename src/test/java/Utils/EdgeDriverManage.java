@@ -4,17 +4,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
-public class EdgeDriverBuilder extends WebDriverManager {
+public class EdgeDriverManage extends WebDriverFactory {
 	
 	   
 	    private EdgeOptions edgeOptions;
 
-	    public EdgeDriverBuilder() {
+	    public EdgeDriverManage() {
 	       
 	        edgeOptions = new EdgeOptions();
 	    }
 
-	    public EdgeDriverBuilder setHeadless(boolean headless) {
+	    public EdgeDriverManage setHeadless(boolean headless) {
 	        if (headless) {
 	           
 	            edgeOptions.addArguments("--headless");
@@ -22,7 +22,7 @@ public class EdgeDriverBuilder extends WebDriverManager {
 	        return this;
 	    }
 
-	    public EdgeDriverBuilder setIncognito(boolean incognito) {
+	    public EdgeDriverManage setIncognito(boolean incognito) {
 	        
 	        return this;
 	    }

@@ -14,9 +14,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import Utils.ChromeDriverBuilder;
+import Utils.ChromeDriverManager;
 //import Utils.DriverFactory;
-import Utils.WebDriverManager;
+import Utils.WebDriverFactory;
 import pomclasses.CartPage;
 import pomclasses.SkisPage;
 import pomclasses.StorePage;
@@ -37,7 +37,7 @@ public class TestMain {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-    	driver= new ChromeDriverBuilder()
+    	driver= new ChromeDriverManager()
                 .setHeadless(false)
                 .setIncognito(false)	
                 .create();

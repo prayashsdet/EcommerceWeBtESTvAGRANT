@@ -2,7 +2,7 @@ package Utils;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class WebDriverManager {
+public abstract class WebDriverFactory {
 	 public abstract WebDriver create();
 
 	        // Set configuration options
