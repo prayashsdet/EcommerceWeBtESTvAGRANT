@@ -11,6 +11,9 @@ public class ChromeDriverManager implements  WebDriverBuilder{
 	        options = new ChromeOptions();
 //	        options.addArguments("--headless");
 	        options.addArguments("--incognito");
+	        options.addArguments("--start-maximized");
+	        options.addArguments("--disable-infobars");
+	        options.addArguments("--disable-notifications");
 	    }
 
 	    public ChromeOptions getOptions() {
