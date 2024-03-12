@@ -1,16 +1,25 @@
 package Utils;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Options;
 
 /**
  * Factory class for creating WebDriver instances based on the specified browser name.
- * This class demonstrates both the Factory Method and Singleton patterns.
- * The Factory Method pattern is used to provide an interface for creating objects, allowing subclasses
- * to alter the type of objects that will be created. In this case, concrete subclasses (ChromeDriverManager,
- * FirefoxDriverManager, EdgeDriverManager) implement the factory method to create WebDriver instances specific
- * to each browser.
- * Additionally, the Singleton pattern ensures that only one instance of the WebDriverManager class exists
- * throughout the application, providing a global point of access to the factory method.
+ * This class demonstrates the Factory Method pattern for object creation.
+ * 
+ * <p>The Factory Method pattern is used to provide an interface for creating objects, 
+ * allowing subclasses to alter the type of objects that will be created. In this case, 
+ * concrete subclasses (ChromeDriverManager, FirefoxDriverManager, EdgeDriverManager) 
+ * implement the factory method to create WebDriver instances specific to each browser.
+ * 
+ * <p>The Factory Method pattern is chosen over the Builder pattern in this context because
+ * it allows for the creation of different types of WebDriver instances based on the browser type
+ * without tightly coupling the client code (test classes) to the specific implementation classes.
+ * Additionally, the Factory Method pattern provides a more straightforward approach when 
+ * dealing with multiple subclasses, each responsible for creating objects of a different type.
+ * Although the Builder pattern can provide more flexibility in configuring and constructing objects,
+ * it may introduce unnecessary complexity for the simple task of creating WebDriver instances 
+ * with different configurations.
  */
 public class WebDriverManager {
     
@@ -21,7 +30,7 @@ public class WebDriverManager {
      * @return a WebDriver instance
      * @throws IllegalArgumentException if the browser type is not supported
      */
-	public static WebDriver getDriver(String browserType) {
+	public static WebDriver getDriver(String browserType,Object options) {
        
         WebDriverBuilder builder;
         switch (browserType) {
@@ -37,6 +46,6 @@ public class WebDriverManager {
             default:
                 throw new IllegalArgumentException("Browser type not supported: " + browserType);
         }
-        return builder.createDriver();
+        return builder.createDriver(options);
     }
 }

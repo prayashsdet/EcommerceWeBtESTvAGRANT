@@ -4,6 +4,8 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -27,11 +29,9 @@ public class TestMain2 {
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
-	driver=	 WebDriverManager.getDriver("firefox");
-         // Example initialization for Firefox: WebDriverManager.initialize("firefox");
-         // Example initialization for Edge: WebDriverManager.initialize("edge");
-         // Retrieve the WebDriver instance
-        
+	
+         driver = WebDriverManager.getDriver("chrome",new FirefoxOptions().addArguments("--disable-popup-blocking"));
+          driver.manage().window().maximize();
               
           driver.manage().window().maximize();
     }
