@@ -5,7 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 
-public class FirefoxDriverManager extends WebDriverFactory {
+public class FirefoxDriverManager extends WebDriverBuilder {
     
 
     private FirefoxOptions firefoxOptions;

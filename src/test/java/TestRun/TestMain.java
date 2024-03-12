@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 import Utils.ChromeDriverManager;
 //import Utils.DriverFactory;
-import Utils.WebDriverFactory;
+import Utils.WebDriverBuilder;
 import pomclasses.CartPage;
 import pomclasses.SkisPage;
 import pomclasses.StorePage;

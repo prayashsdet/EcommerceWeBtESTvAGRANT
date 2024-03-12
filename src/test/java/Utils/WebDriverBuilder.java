@@ -2,8 +2,26 @@ package Utils;
 
 import org.openqa.selenium.WebDriver;
 
-public interface WebDriverBuilder {
-    WebDriverBuilder setHeadless(boolean headless);
-    WebDriverBuilder setIncognito(boolean incognito);
-    WebDriver build();
-}
+public abstract class WebDriverBuilder {
+	 public abstract WebDriver create();
+
+	        // Set configuration options
+//	        builder.setHeadless(headless);
+//	        builder.setIncognito(incognito);
+//
+//	        return builder.build();
+	    }
+	
+//    /**
+//     * Build and return the WebDriver instance.
+//     *
+//     * @return the WebDriver instance
+//     * @throws IllegalStateException if WebDriver has not been created
+//     */
+//    public WebDriver build() {
+//        if (driver == null) {
+//            throw new IllegalStateException("WebDriver has not been created. Please call create() method first.");
+//        }
+//        return driver;
+    
+
