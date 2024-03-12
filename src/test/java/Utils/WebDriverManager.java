@@ -4,47 +4,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public abstract class WebDriverManager {
-	 private static WebDriver chromeDriver;
-	    private static WebDriver firefoxDriver;
-	    private static WebDriver edgeDriver;
-	 public static void initialize(String browserName) {
+	 
+	 public static WebDriver initialize(String browserName) {
+		 WebDriver driver;
 	        switch (browserName.toLowerCase()) {
 	            case "chrome":
-	                chromeDriver = new ChromeDriverManager().getChromeDriver();
-	                break;
-	            case "firefox":
-	                firefoxDriver = new FirefoxDriverManager().getFirefoxdriver();
-	                break;
+	              driver= new ChromeDriverManager().getChromeDriver();
+	               break;
+			case "firefox":
+	              driver=new FirefoxDriverManager().getFirefoxdriver();
+	      
 	            case "edge":
-	                edgeDriver = new EdgeDriverManage().getEdgeDriver();
-	                break;
+	               driver=  new EdgeDriverManage().getEdgeDriver();
+	             
 	            default:
 	                throw new IllegalArgumentException("Browser type not supported: " + browserName);
 	        }
+	        return driver;
+	        
 	 }
 	        
-	        public static WebDriver getChromeDriver() {
-	            if (chromeDriver == null) {
-	                throw new IllegalStateException("Chrome driver not initialized. Call initialize method first.");
-	            }
-	            return chromeDriver;
-	        }
-
-	        public static WebDriver getFirefoxDriver() {
-	            if (firefoxDriver == null) {
-	                throw new IllegalStateException("Firefox driver not initialized. Call initialize method first.");
-	            }
-	            return firefoxDriver;
-	        }
-
-	        public static WebDriver getEdgeDriver() {
-	            if (edgeDriver == null) {
-	                throw new IllegalStateException("Edge driver not initialized. Call initialize method first.");
-	            }
-	            return edgeDriver;
-	        }
-	    
-	 }
+	   	 }
 	        // Set configuration options
 //	        builder.setHeadless(headless);
 //	        builder.setIncognito(incognito);

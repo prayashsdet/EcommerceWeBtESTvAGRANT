@@ -41,7 +41,7 @@ public class TestMain {
          // Example initialization for Firefox: WebDriverManager.initialize("firefox");
          // Example initialization for Edge: WebDriverManager.initialize("edge");
          // Retrieve the WebDriver instance
-         driver = WebDriverManager.getChromeDriver();
+      
               
           driver.manage().window().maximize();
     }
