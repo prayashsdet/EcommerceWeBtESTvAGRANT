@@ -66,7 +66,9 @@ public class TestMain {
        
             // Add product to cart
             skisPage.addToCart();
+            Assert.assertTrue(driver.getPageSource().contains("Item added to your cart"), "Item added to cart message not found");
             skisPage.viewCart();
+            Assert.assertEquals(cpg.getProductName(), "16 Ti Skis");
 
          
       

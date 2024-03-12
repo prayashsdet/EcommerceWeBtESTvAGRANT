@@ -29,7 +29,7 @@ public class EdgeDriverManage  implements WebDriverBuilder {
 
 	 
 
-	    public WebDriver getWebDriver() {
+	    public WebDriver createDriver() {
 	        return new EdgeDriver(edgeOptions);
 	    }
 	}

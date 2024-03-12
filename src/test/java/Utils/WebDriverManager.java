@@ -30,6 +30,6 @@ public class WebDriverManager {
             default:
                 throw new IllegalArgumentException("Browser type not supported: " + browserType);
         }
-        return builder.getWebDriver();
+        return builder.createDriver();
     }
 }

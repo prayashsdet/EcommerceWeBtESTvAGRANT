@@ -32,7 +32,7 @@ public class FirefoxDriverManager  implements WebDriverBuilder {
         
        
 
-    public WebDriver getWebDriver() {
+    public WebDriver createDriver() {
         return new FirefoxDriver(firefoxOptions);
     }
 }

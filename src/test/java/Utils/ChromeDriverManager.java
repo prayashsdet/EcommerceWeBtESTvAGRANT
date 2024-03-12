@@ -32,7 +32,7 @@ public class ChromeDriverManager implements  WebDriverBuilder{
 
 	 
 
-	    public WebDriver getWebDriver() {
+	    public WebDriver createDriver() {
 	        return new ChromeDriver(options);
 	    }
 	}
