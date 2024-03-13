@@ -38,4 +38,27 @@ public class TestWebdrivermanger {
 		new FirefoxOptions().addArguments("--headles");
 		Assert.assertTrue(new FirefoxOptions().getCapabilityNames().contains("--headless"));
 	}
+	 @Test
+	    public void testWindowsOS() {
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--user-agent=Windows");
+	        Assert.assertTrue(options.getCapabilityNames().contains("--user-agent=Windows"));
+	    }
+	 @Test
+	    public void testDisableExtensions() {
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--disable-extensions");
+	        Assert.assertTrue(options.getCapabilityNames().contains("--disable-extensions"));
+	    }
+	 
+	 @Test
+	    public void testDisablePopupBlocking() {
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--disable-popup-blocking");
+	        Assert.assertTrue(options.getCapabilityNames().contains("--disable-popup-blocking"));
+	    }
+	 
+
+	
+	
 }

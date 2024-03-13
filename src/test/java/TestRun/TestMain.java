@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import Utils.ChromeDriverManager;
@@ -34,7 +35,7 @@ public class TestMain {
      * Set up method to initialize WebDriver.
      * This method sets up the WebDriver before each test method.
      */
-    @BeforeMethod
+    @BeforeSuite
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();

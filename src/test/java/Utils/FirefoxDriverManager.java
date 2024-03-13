@@ -14,7 +14,7 @@ public class FirefoxDriverManager  implements WebDriverBuilder {
 
     public FirefoxDriverManager() {
        options = new FirefoxOptions();
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         
     }
 
