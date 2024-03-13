@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 /**
  * Factory class for creating WebDriver instances based on the specified browser name.
@@ -31,23 +33,28 @@ public class WebDriverManager {
      * @param browserName the name of the browser (e.g., "chrome", "firefox", "edge")
      * @return a WebDriver instance
      * @throws IllegalArgumentException if the browser type is not supported
+     * 
      */
-	public static WebDriver getDriver(String browserType) {
+	@BeforeSuite
+	 @Parameters("browser")
+	public static WebDriver getDriver(String browser) {
        
-        WebDriverBuilder builder;
-        switch (browserType) {
-            case "chrome":
-            	builder = new ChromeDriverManager();
-                break;
-            case "firefox":
-            	builder = new FirefoxDriverManager();
-                break;
-            case "edge":
-            	builder = new EdgeDriverManage();
-                break;
-            default:
-                throw new IllegalArgumentException("Browser type not supported: " + browserType);
-        }
+
+		        WebDriverBuilder builder;
+		        switch (browser) {
+		            case "chrome":
+		                builder = new ChromeDriverManager();
+		                break;
+		            case "firefox":
+		                builder = new FirefoxDriverManager();
+		                break;
+		            case "edge":
+		                builder = new EdgeDriverManage();
+		                break;
+		            default:
+		                throw new IllegalArgumentException("Browser type not supported: " + browser);
+		        }
+
         
 //        if (options != null) {
 //            if (builder instanceof ChromeDriverManager && options instanceof ChromeOptions) {
