@@ -7,7 +7,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class ChromeDriverManager implements  WebDriverBuilder{
 	 private ChromeOptions options;
 
-	    public ChromeDriverManager() {
+	    public ChromeOptions setOptions(ChromeOptions options) {
+		return this.options = options;
+	}
+
+		public ChromeDriverManager() {
 	        options = new ChromeOptions();
 //	        options.addArguments("--headless");
 //	        options.addArguments("--incognito");
@@ -28,4 +32,6 @@ public class ChromeDriverManager implements  WebDriverBuilder{
 	    public WebDriver createDriver() {
 	        return new ChromeDriver(options);
 	    }
+
+		
 	}

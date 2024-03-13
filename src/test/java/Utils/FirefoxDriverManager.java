@@ -12,7 +12,11 @@ public class FirefoxDriverManager  implements WebDriverBuilder {
     private FirefoxOptions options;
   
 
-    public FirefoxDriverManager() {
+    public FirefoxOptions setOptions(FirefoxOptions options) {
+	return	this.options = options;
+	}
+
+	public FirefoxDriverManager() {
        options = new FirefoxOptions();
 //        options.addArguments("--headless");
         
