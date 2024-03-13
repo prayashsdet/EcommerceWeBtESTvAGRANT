@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="WebDriverTestSuite" >
+<suite name="WebDriverTestSuite" parallel="tests" thread-count="2">
   <test name="TestMain">
     <parameter name="browser" value="chrome"/>
     <classes>

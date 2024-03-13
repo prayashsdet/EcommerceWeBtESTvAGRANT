@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [WebDriverTestSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="TestMain(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="TestRun.TestMain">
+        <methods>
+          <include name="testAddProductToCart"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- TestRun.TestMain -->
+    </classes>
+  </test> <!-- TestMain(failed) -->
+</suite> <!-- Failed suite [WebDriverTestSuite] -->
