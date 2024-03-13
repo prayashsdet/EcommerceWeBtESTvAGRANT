@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import Utils.ChromeDriverManager;
@@ -26,7 +25,7 @@ public class TestMain2 {
 	private WebDriver driver;
 	
 	
-	@BeforeSuite
+	@BeforeMethod
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
