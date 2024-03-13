@@ -11,7 +11,13 @@ import Utils.EdgeDriverManage;
 import Utils.FirefoxDriverManager;
 import Utils.WebDriverBuilder;
 import Utils.WebDriverManager;
+/**This class covers various functionalities of the WebDriverManager:
 
+Getting drivers for multiple browsers.
+Getting drivers specifically for Chrome, Firefox, and Edge browsers.
+Setting and applying options for Chrome and Firefox browsers.
+Performing assertions on the obtained WebDriver instances.
+**/
 public class TestWebdrivermanger {
 	@Test
 	public void testMultipleBrowsers() {
@@ -102,4 +108,51 @@ public class TestWebdrivermanger {
 	        Assert.assertEquals(firefoxDriver.getTitle(), "Example Domain");
 	        // Add more assertions for Firefox browser
 	    }
-}
+	    @Test
+	    public void  test() {
+	        WebDriver chromeDriver = WebDriverManager.getDriver("chrome");
+	        Assert.assertNotNull(chromeDriver, "Chrome driver instance is null");
+	        chromeDriver.get("https://example.com");
+	        Assert.assertEquals(chromeDriver.getTitle(), "Example Domain", "Page title is incorrect for Chrome browser");
+	    }
+
+	    @Test
+	    public void testFirefoxBrowser1() {
+	        WebDriver firefoxDriver = WebDriverManager.getDriver("firefox");
+	        Assert.assertNotNull(firefoxDriver, "Firefox driver instance is null");
+	        firefoxDriver.get("https://example.com");
+	        Assert.assertEquals(firefoxDriver.getTitle(), "Example Domain", "Page title is incorrect for Firefox browser");
+	    }
+
+	    @Test
+	    public void testChromeOptions() {
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--headless");
+	        options.addArguments("--disable-gpu");
+	        WebDriver chromeDriver = WebDriverManager.getDriver("chrome");
+	        Assert.assertNotNull(chromeDriver, "Chrome driver instance with options is null");
+	        // Perform additional assertions related to Chrome options
+	    }
+
+	    @Test
+	    public void testFirefoxOptions() {
+	        FirefoxOptions options = new FirefoxOptions();
+	        options.addArguments("--headless");
+	        options.addArguments("--disable-gpu");
+	        WebDriver firefoxDriver = WebDriverManager.getDriver("firefox");
+	        Assert.assertNotNull(firefoxDriver, "Firefox driver instance with options is null");
+	        // Perform additional assertions related to Firefox options
+	    }
+
+	    @Test
+	    public void testEdgeBrowser() {
+	        WebDriver edgeDriver = WebDriverManager.getDriver("edge");
+	        Assert.assertNotNull(edgeDriver, "Edge driver instance is null");
+	        edgeDriver.get("https://example.com");
+	        Assert.assertEquals(edgeDriver.getTitle(), "Example Domain", "Page title is incorrect for Edge browser");
+	    }
+
+	    // Add more test methods to cover other functionalities of WebDriverManager
+
+	}
+

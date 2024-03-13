@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [WebDriverTestSuite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="TestMain(failed)">
-    <parameter name="browser" value="chrome"/>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="classes" name="Failed suite [WebDriverTestSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="2" parallel="classes" name="TestMain(failed)">
     <classes>
+      <class name="TestRun.TestMain2">
+        <methods>
+          <include name="verifyincrementcount"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- TestRun.TestMain2 -->
       <class name="TestRun.TestMain">
         <methods>
           <include name="testAddProductToCart"/>
