@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import Utils.ChromeDriverManager;
@@ -34,7 +36,7 @@ public class TestMain {
      * Set up method to initialize WebDriver.
      * This method sets up the WebDriver before each test method.
      */
-    @BeforeMethod
+    @BeforeTest
     public void setUp() {
         // Set up WebDriver
 //    	  driverFactory = DriverFactory.getInstance();
@@ -59,6 +61,7 @@ public class TestMain {
     @Test
     public void testAddProductToCart() {
         // Navigate to the website
+    	System.out.println(Thread.currentThread().getId());
         driver.get("https://web-playground.ultralesson.com/collections/all");
 
         // Initialize page objects
@@ -85,7 +88,7 @@ public class TestMain {
      * Tear down method to close the WebDriver.
      * This method closes the WebDriver after each test method.
      */
-    @AfterMethod
+    @AfterTest
     public void tearDown() {
         // Close the browser
     	 if (driver != null) {
