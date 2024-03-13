@@ -11,12 +11,12 @@ import org.testng.annotations.Parameters;
  * Factory class for creating WebDriver instances based on the specified browser name.
  * This class demonstrates the Factory Method pattern for object creation.
  * 
- * <p>The Factory Method pattern is used to provide an interface for creating objects, 
+ * The Factory Method pattern is used to provide an interface for creating objects, 
  * allowing subclasses to alter the type of objects that will be created. In this case, 
  * concrete subclasses (ChromeDriverManager, FirefoxDriverManager, EdgeDriverManager) 
  * implement the factory method to create WebDriver instances specific to each browser.
  * 
- * <p>The Factory Method pattern is chosen over the Builder pattern in this context because
+ * The Factory Method pattern is chosen over the Builder pattern in this context because
  * it allows for the creation of different types of WebDriver instances based on the browser type
  * without tightly coupling the client code (test classes) to the specific implementation classes.
  * Additionally, the Factory Method pattern provides a more straightforward approach when 
@@ -36,7 +36,7 @@ public class WebDriverManager {
      * 
      */
 	@BeforeSuite
-	 @Parameters("browser")
+//	 @Parameters("browser")
 	public static WebDriver getDriver(String browser) {
        
 

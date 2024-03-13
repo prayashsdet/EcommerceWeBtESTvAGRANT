@@ -1,16 +1,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="WebDriverTestSuite" parallel="tests" thread-count="2">
+<suite name="WebDriverTestSuite" parallel="classes" thread-count="2">
   <test name="TestMain">
-    <parameter name="browser" value="chrome"/>
+    
     <classes>
       <class name="TestRun.TestMain"/>
+       <class name="TestRun.TestMain2"/>
     </classes>
   </test>
   
-  <test name="TestMain2">
-    <parameter name="browser" value="firefox"/>
-    <classes>
-      <class name="TestRun.TestMain2"/>
-    </classes>
-  </test>
+  
 </suite>

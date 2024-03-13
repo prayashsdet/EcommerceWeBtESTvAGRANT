@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -75,5 +76,14 @@ public class TestMain2 {
 	 // Wait for the "Item added to your cart" message to appear
     
    
+}
+	@AfterTest
+    public void tearDown() {
+        // Close the browser
+    	 if (driver != null) {
+             // Quit WebDriver and remove from DriverFactory
+             driver.quit();
+//             driverFactory.quitDriver("chrome");
+        }
 }
 }
