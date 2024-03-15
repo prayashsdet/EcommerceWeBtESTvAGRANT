@@ -3,7 +3,7 @@ package TestRun;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.PropertyConfigurator;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,11 +34,11 @@ import pomclasses.UltraLessonHomePageActions;
  */
 public class TestMain {
 	private WebDriver driver;
-	 private static final Logger logger = LoggerFactory.getLogger(TestMain.class);
-	    static {
-	        // Load Log4j properties from a file or set them programmatically
-	        PropertyConfigurator.configure("log4j2.properties");
-	    }
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(TestMain.class);
+//	    static {
+//	        // Load Log4j properties from a file or set them programmatically
+//	        PropertyConfigurator.configure("log4j2.properties");
+//	    }
 
 //    private DriverFactory driverFactory;
     /**
