@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
  * Represents the Store Page of the UltraLesson website.
  * This class provides methods to interact with the store page, such as selecting products.
  */
-public class StorePage {
-    private WebDriver driver;
+public class StorePageActions {
+    private final  WebDriver driver;
 
     @FindBy(xpath = "//a[normalize-space()='16 Ti Skis']")
     private WebElement tiSkisLink;
@@ -21,7 +21,7 @@ public class StorePage {
      * Constructs a new StorePage object.
      * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
-    public StorePage(WebDriver driver) {
+    public  StorePageActions(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -30,7 +30,7 @@ public class StorePage {
      * Selects the Ti Skis product from the store.
      * Clicks on the Ti Skis link to navigate to the product page.
      */
-    public void selectTiSkis() {
+    public synchronized void selectTiSkis() {
         tiSkisLink.click();
     }
 }

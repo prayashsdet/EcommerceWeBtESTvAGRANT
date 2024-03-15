@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
  * Represents the Cart Page of the UltraLesson website.
  * Provides methods to interact with the cart page, such as removing products and verifying cart status.
  */
-public class CartPage {
-    private WebDriver driver;
+public class CartActions {
+    private  final WebDriver driver;
 
     @FindBy(xpath = "//a[@class='cart-item__name h4 break']")
     private WebElement productName;
@@ -39,7 +39,7 @@ public class CartPage {
      * Constructs a new CartPage object.
      * @param driver The WebDriver instance.
      */
-    public CartPage(WebDriver driver) {
+    public CartActions(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -48,7 +48,7 @@ public class CartPage {
      * Retrieves the name of the product in the cart.
      * @return The name of the product.
      */
-    public String getProductName() {
+    public  synchronized String getProductName() {
         return productName.getText();
     }
 
@@ -56,7 +56,7 @@ public class CartPage {
      * Retrieves the size of the product in the cart.
      * @return The size of the product.
      */
-    public String getProductSize() {
+    public synchronized String getProductSize() {
         return productSize.getText();
     }
 
@@ -64,7 +64,7 @@ public class CartPage {
      * Retrieves the quantity of the product in the cart.
      * @return The quantity of the product.
      */
-    public String getProductQuantity() {
+    public synchronized  String getProductQuantity() {
         return productQuantity.getDomAttribute("value");
     }
 
@@ -72,7 +72,7 @@ public class CartPage {
      * Retrieves the price of the product in the cart.
      * @return The price of the product.
      */
-    public String getProductPrice() {
+    public synchronized String getProductPrice() {
         return productPrice.getText();
     }
 
@@ -80,14 +80,14 @@ public class CartPage {
      * Retrieves the total price of the products in the cart.
      * @return The total price of the products in the cart.
      */
-    public String getTotalPrice() {
+    public synchronized String getTotalPrice() {
         return totalPrice.getText();
     }
 
     /**
      * Removes a product from the cart.
      */
-    public void removeProductFromCart() {
+    public synchronized  void removeProductFromCart() {
         removeButton.click();
     }
 
@@ -95,7 +95,7 @@ public class CartPage {
      * Verifies if the cart is empty.
      * @return True if the cart is empty, false otherwise.
      */
-    public boolean isCartEmpty() {
+    public synchronized boolean isCartEmpty() {
         return emptyCartMessage.isDisplayed();
     }
 }

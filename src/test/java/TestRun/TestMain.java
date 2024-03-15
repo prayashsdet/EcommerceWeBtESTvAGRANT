@@ -20,10 +20,10 @@ import org.testng.annotations.Test;
 import Utils.ChromeDriverManager;
 //import Utils.DriverFactory;
 import Utils.WebDriverManager;
-import pomclasses.CartPage;
-import pomclasses.SkisPage;
-import pomclasses.StorePage;
-import pomclasses.UltraLessonHomePage;
+import pomclasses.CartActions;
+import pomclasses.SkisPageActions;
+import pomclasses.StorePageActions;
+import pomclasses.UltraLessonHomePageActions;
 
 /**
  * Test class for adding a product to the cart.
@@ -65,10 +65,10 @@ public class TestMain {
         driver.get("https://web-playground.ultralesson.com/collections/all");
 
         // Initialize page objects
-        UltraLessonHomePage homePage = new UltraLessonHomePage(driver);
-        StorePage storePage = new StorePage(driver);
-        SkisPage skisPage = new SkisPage(driver);
-        CartPage cpg = new CartPage(driver);
+        UltraLessonHomePageActions homePage = new UltraLessonHomePageActions(driver);
+        StorePageActions storePage = new StorePageActions(driver);
+        SkisPageActions skisPage = new SkisPageActions(driver);
+        CartActions cpg = new CartActions(driver);
         homePage.clickOnStorePageLink();
         storePage.selectTiSkis();
         // Check if the product is available

@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
  * Represents the UltraLesson Home Page.
  * This class provides methods to interact with the home page, such as navigating to the store.
  */
-public class UltraLessonHomePage {
-    private WebDriver driver;
+public class UltraLessonHomePageActions {
+    private final  WebDriver driver;
 
     @FindBy(xpath = "//span[@class='header__active-menu-item']")
     private WebElement storeButton;
@@ -21,7 +21,7 @@ public class UltraLessonHomePage {
      * Constructs a new UltraLessonHomePage object.
      * Initializes the WebDriver instance and initializes page elements using PageFactory.
      */
-    public UltraLessonHomePage(WebDriver driver) {
+    public UltraLessonHomePageActions(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
