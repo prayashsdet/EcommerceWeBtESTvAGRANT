@@ -3,6 +3,7 @@ package TestRun;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -31,6 +34,12 @@ import pomclasses.UltraLessonHomePageActions;
  */
 public class TestMain {
 	private WebDriver driver;
+	 private static final Logger logger = LoggerFactory.getLogger(TestMain.class);
+	    static {
+	        // Load Log4j properties from a file or set them programmatically
+	        PropertyConfigurator.configure("log4j2.properties");
+	    }
+
 //    private DriverFactory driverFactory;
     /**
      * Set up method to initialize WebDriver.
@@ -69,12 +78,14 @@ public class TestMain {
         StorePageActions storePage = new StorePageActions(driver);
         SkisPageActions skisPage = new SkisPageActions(driver);
         CartActions cpg = new CartActions(driver);
-        homePage.clickOnStorePageLink();
+        homePage.clickOnStorePageLink(logger);
         storePage.selectTiSkis();
         // Check if the product is available
        
             // Add product to cart
             skisPage.addToCart();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[normalize-space()='Item added to your cart']")));
             Assert.assertTrue(driver.getPageSource().contains("Item added to your cart"), "Item added to cart message not found");
             skisPage.viewCart();
             Assert.assertEquals(cpg.getProductName(), "16 Ti Skis");

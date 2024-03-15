@@ -1,5 +1,6 @@
 package pomclasses;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CartActions {
-    private static final Logger logger = LogManager.getLogger(CartActions.class);
+    public static final Logger logger = LogManager.getLogger(CartActions.class);
+    static {
+        // Load Log4j properties from a file or set them programmatically
+        PropertyConfigurator.configure("log4j2.properties");
+    }
+
     private final WebDriver driver;
 
     @FindBy(xpath = "//a[@class='cart-item__name h4 break']")
@@ -46,6 +52,7 @@ public class CartActions {
      * @return The name of the product.
      */
     public synchronized String getProductName() {
+    	
         logger.info("Getting product name from cart");
         return productName.getText();
     }
@@ -55,7 +62,7 @@ public class CartActions {
      * @return The size of the product.
      */
     public synchronized String getProductSize() {
-        logger.info("Getting product size from cart");
+        logger.debug("Getting product size from cart");
         return productSize.getText();
     }
 
@@ -64,7 +71,7 @@ public class CartActions {
      * @return The quantity of the product.
      */
     public synchronized String getProductQuantity() {
-        logger.info("Getting product quantity from cart");
+        logger.warn("Getting product quantity from cart");
         return productQuantity.getDomAttribute("value");
     }
 
@@ -73,7 +80,7 @@ public class CartActions {
      * @return The price of the product.
      */
     public synchronized String getProductPrice() {
-        logger.info("Getting product price from cart");
+        logger.error("Getting product price from cart");
         return productPrice.getText();
     }
 

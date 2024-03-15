@@ -49,7 +49,7 @@ public class TestMain2 {
 	        StorePageActions storePage = new StorePageActions(driver);
 	        SkisPageActions skisPage = new SkisPageActions(driver);
 	        CartActions cpg = new CartActions(driver);
-	        homePage.clickOnStorePageLink();
+//	        homePage.clickOnStorePageLink();
 	        storePage.selectTiSkis();
 	        // Check if the product is available
 	        if (skisPage.isProductAvailable().isEnabled()) {

@@ -1,5 +1,6 @@
 package pomclasses;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SkisPageActions {
     private static final Logger logger = LogManager.getLogger(SkisPageActions.class);
+    static {
+        // Load Log4j properties from a file or set them programmatically
+        PropertyConfigurator.configure("log4j2.properties");
+    }
     private final WebDriver driver;
 
     @FindBy(xpath = "//button[@name='add']")
