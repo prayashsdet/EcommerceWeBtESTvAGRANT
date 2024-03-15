@@ -1,18 +1,15 @@
 package pomclasses;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-//import Utils.DriverFactory;
-
-/**
- * Represents the Cart Page of the UltraLesson website.
- * Provides methods to interact with the cart page, such as removing products and verifying cart status.
- */
 public class CartActions {
-    private  final WebDriver driver;
+    private static final Logger logger = LogManager.getLogger(CartActions.class);
+    private final WebDriver driver;
 
     @FindBy(xpath = "//a[@class='cart-item__name h4 break']")
     private WebElement productName;
@@ -36,7 +33,7 @@ public class CartActions {
     private WebElement emptyCartMessage;
 
     /**
-     * Constructs a new CartPage object.
+     * Constructs a new CartActions object.
      * @param driver The WebDriver instance.
      */
     public CartActions(WebDriver driver) {
@@ -48,7 +45,8 @@ public class CartActions {
      * Retrieves the name of the product in the cart.
      * @return The name of the product.
      */
-    public  synchronized String getProductName() {
+    public synchronized String getProductName() {
+        logger.info("Getting product name from cart");
         return productName.getText();
     }
 
@@ -57,6 +55,7 @@ public class CartActions {
      * @return The size of the product.
      */
     public synchronized String getProductSize() {
+        logger.info("Getting product size from cart");
         return productSize.getText();
     }
 
@@ -64,7 +63,8 @@ public class CartActions {
      * Retrieves the quantity of the product in the cart.
      * @return The quantity of the product.
      */
-    public synchronized  String getProductQuantity() {
+    public synchronized String getProductQuantity() {
+        logger.info("Getting product quantity from cart");
         return productQuantity.getDomAttribute("value");
     }
 
@@ -73,6 +73,7 @@ public class CartActions {
      * @return The price of the product.
      */
     public synchronized String getProductPrice() {
+        logger.info("Getting product price from cart");
         return productPrice.getText();
     }
 
@@ -81,13 +82,15 @@ public class CartActions {
      * @return The total price of the products in the cart.
      */
     public synchronized String getTotalPrice() {
+        logger.info("Getting total price from cart");
         return totalPrice.getText();
     }
 
     /**
      * Removes a product from the cart.
      */
-    public synchronized  void removeProductFromCart() {
+    public synchronized void removeProductFromCart() {
+        logger.info("Removing product from cart");
         removeButton.click();
     }
 
@@ -96,6 +99,7 @@ public class CartActions {
      * @return True if the cart is empty, false otherwise.
      */
     public synchronized boolean isCartEmpty() {
+        logger.info("Checking if cart is empty");
         return emptyCartMessage.isDisplayed();
     }
 }
