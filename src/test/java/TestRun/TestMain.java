@@ -34,8 +34,7 @@ import pomclasses.UltraLessonHomePageActions;
  */
 public class TestMain {
 	private WebDriver driver;
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(TestMain.class);
-//	    static {
+	
 //	        // Load Log4j properties from a file or set them programmatically
 //	        PropertyConfigurator.configure("log4j2.properties");
 //	    }
@@ -78,7 +77,7 @@ public class TestMain {
         StorePageActions storePage = new StorePageActions(driver);
         SkisPageActions skisPage = new SkisPageActions(driver);
         CartActions cpg = new CartActions(driver);
-        homePage.clickOnStorePageLink(logger);
+        homePage.clickOnStorePageLink();
         storePage.selectTiSkis();
         // Check if the product is available
        

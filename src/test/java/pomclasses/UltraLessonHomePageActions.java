@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  */
 public class UltraLessonHomePageActions {
     private final WebDriver driver;
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UltraLessonHomePageActions.class);
+    private static final Logger logger = LoggerFactory.getLogger(UltraLessonHomePageActions.class);
 //    static {
 //        // Load Log4j properties from a file or set them programmatically
 //        PropertyConfigurator.configure("log4j2.properties");
@@ -36,7 +36,7 @@ public class UltraLessonHomePageActions {
      * Navigates to the store page.
      * Clicks on the store button to navigate to the store page.
      */
-    public void clickOnStorePageLink(Logger logger ) {
+    public void clickOnStorePageLink( ) {
         storeButton.click();
         logger.info("Clicked on the store button to navigate to the store page.");
     }
