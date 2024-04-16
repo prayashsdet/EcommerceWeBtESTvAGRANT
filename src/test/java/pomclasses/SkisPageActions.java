@@ -59,7 +59,7 @@ public class SkisPageActions {
      * @return WebElement representing the sold out message if the product is unavailable, null otherwise.
      */
     public synchronized WebElement isProductAvailable() {
-        logger.info("Checking product availability");
+        logger.error("Checking product availability");
         return soldOutMessage;
     }
 }
