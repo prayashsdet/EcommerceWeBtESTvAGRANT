@@ -1,16 +1,18 @@
 package pomclasses;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 //import org.apache.log4j.PropertyConfigurator;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class StorePageActions {
-	private static final Logger logger = LoggerFactory.getLogger(StorePageActions.class);
+	public  static  Logger logger ;
 //    static {
 //         // Load Log4j properties from a file or set them programmatically
 //        PropertyConfigurator.configure("log4j2.properties");
@@ -26,7 +28,8 @@ public class StorePageActions {
      */
     public StorePageActions(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+                PageFactory.initElements(driver, this);
+                logger = LogManager.getLogger(this.getClass().getName());
     }
 
     /**

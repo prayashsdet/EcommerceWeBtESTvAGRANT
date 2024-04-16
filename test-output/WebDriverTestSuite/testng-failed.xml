@@ -3,13 +3,6 @@
 <suite thread-count="2" parallel="classes" name="Failed suite [WebDriverTestSuite]" guice-stage="DEVELOPMENT">
   <test thread-count="2" parallel="classes" name="TestMain(failed)">
     <classes>
-      <class name="TestRun.TestMain2">
-        <methods>
-          <include name="verifyincrementcount"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- TestRun.TestMain2 -->
       <class name="TestRun.TestMain">
         <methods>
           <include name="testAddProductToCart"/>
@@ -17,6 +10,13 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- TestRun.TestMain -->
+      <class name="TestRun.TestMain2">
+        <methods>
+          <include name="verifyincrementcount"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- TestRun.TestMain2 -->
     </classes>
   </test> <!-- TestMain(failed) -->
 </suite> <!-- Failed suite [WebDriverTestSuite] -->

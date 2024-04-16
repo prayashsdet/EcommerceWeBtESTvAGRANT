@@ -1,0 +1,6 @@
+16:03:48.455 [main]INFO  pomclasses.StorePageActions - Selecting Ti Skis product
+16:03:49.707 [main]INFO  pomclasses.SkisPageActions - Checking product availability
+16:03:49.720 [main]INFO  pomclasses.SkisPageActions - Adding product to cart
+16:03:51.052 [main]INFO  pomclasses.SkisPageActions - Viewing cart
+16:03:51.546 [main]INFO  pomclasses.CartActions - Getting product name from cart
+16:03:51.616 [main]INFO  pomclasses.CartActions - Getting total price from cart

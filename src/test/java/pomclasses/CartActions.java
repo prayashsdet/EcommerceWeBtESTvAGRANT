@@ -3,15 +3,20 @@ package pomclasses;
 
 
 
+import java.util.logging.Level;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class CartActions {
-	private static final Logger logger = LoggerFactory.getLogger(CartActions.class);
+	private  static  Logger logger ;
+
 //    static {
 //        // Load Log4j properties from a file or set them programmatically
 //        PropertyConfigurator.configure("log4j2.properties");
@@ -46,7 +51,8 @@ public class CartActions {
      */
     public CartActions(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+             PageFactory.initElements(driver, this);
+             logger = LogManager.getLogger(this.getClass().getName());
     }
 
     /**
@@ -56,6 +62,7 @@ public class CartActions {
     public synchronized String getProductName() {
     	
         logger.info("Getting product name from cart");
+       
         return productName.getText();
     }
 
@@ -64,7 +71,7 @@ public class CartActions {
      * @return The size of the product.
      */
     public synchronized String getProductSize() {
-        logger.debug("Getting product size from cart");
+//        logger.debug("Getting product size from cart");
         return productSize.getText();
     }
 
@@ -73,7 +80,7 @@ public class CartActions {
      * @return The quantity of the product.
      */
     public synchronized String getProductQuantity() {
-        logger.warn("Getting product quantity from cart");
+//        logger.warn("Getting product quantity from cart");
         return productQuantity.getDomAttribute("value");
     }
 
@@ -82,7 +89,7 @@ public class CartActions {
      * @return The price of the product.
      */
     public synchronized String getProductPrice() {
-        logger.error("Getting product price from cart");
+//        logger.error("Getting product price from cart");
         return productPrice.getText();
     }
 

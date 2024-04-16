@@ -33,6 +33,7 @@ import pomclasses.UltraLessonHomePageActions;
  * This class contains methods to test the functionality of adding a product to the cart on the UltraLesson website.
  */
 public class TestMain {
+//	public  static  Logger logger = LoggerFactory.getLogger(StorePageActions.class);
 	private WebDriver driver;
 	
 //	        // Load Log4j properties from a file or set them programmatically
@@ -71,6 +72,7 @@ public class TestMain {
         // Navigate to the website
     	System.out.println(Thread.currentThread().getId());
         driver.get("https://web-playground.ultralesson.com/collections/all");
+//        logger.info("logged in successfully");
 
         // Initialize page objects
         UltraLessonHomePageActions homePage = new UltraLessonHomePageActions(driver);

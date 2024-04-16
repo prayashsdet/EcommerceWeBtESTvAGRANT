@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite thread-count="2" parallel="classes" name="Failed suite [WebDriverTestSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="2" parallel="classes" name="TestMain(failed)">
     <classes>
       <class name="TestRun.TestMain">
         <methods>
@@ -10,6 +10,13 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- TestRun.TestMain -->
+      <class name="TestRun.TestMain2">
+        <methods>
+          <include name="verifyincrementcount"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- TestRun.TestMain2 -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- TestMain(failed) -->
+</suite> <!-- Failed suite [WebDriverTestSuite] -->
