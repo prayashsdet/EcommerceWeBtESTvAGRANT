@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-16T10:05:05Z" name="Default suite" finished-at="2024-04-16T10:05:19Z" duration-ms="14395">
+  <suite started-at="2024-04-16T10:12:17Z" name="Default suite" finished-at="2024-04-16T10:12:29Z" duration-ms="12105">
     <groups>
     </groups>
-    <test started-at="2024-04-16T10:05:05Z" name="Default test" finished-at="2024-04-16T10:05:19Z" duration-ms="14395">
-      <class name="TestRun.TestMain">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:TestRun.TestMain@265adfad]" started-at="2024-04-16T10:05:05Z" name="setUp" finished-at="2024-04-16T10:05:08Z" duration-ms="3463" status="PASS">
+    <test started-at="2024-04-16T10:12:17Z" name="Default test" finished-at="2024-04-16T10:12:29Z" duration-ms="12105">
+      <class name="TestRun.TestMain2">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestRun.TestMain2@265adfad]" started-at="2024-04-16T10:12:17Z" name="setUp" finished-at="2024-04-16T10:12:24Z" duration-ms="7027" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testAddProductToCart()[pri:0, instance:TestRun.TestMain@265adfad]" started-at="2024-04-16T10:05:08Z" name="testAddProductToCart" finished-at="2024-04-16T10:05:19Z" duration-ms="10276" status="PASS">
+        <test-method signature="verifyincrementcount()[pri:0, instance:TestRun.TestMain2@265adfad]" started-at="2024-04-16T10:12:24Z" name="verifyincrementcount" finished-at="2024-04-16T10:12:28Z" duration-ms="4273" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddProductToCart -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestRun.TestMain@265adfad]" started-at="2024-04-16T10:05:19Z" name="tearDown" finished-at="2024-04-16T10:05:19Z" duration-ms="643" status="PASS">
+        </test-method> <!-- verifyincrementcount -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestRun.TestMain2@265adfad]" started-at="2024-04-16T10:12:28Z" name="tearDown" finished-at="2024-04-16T10:12:29Z" duration-ms="789" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestRun.TestMain -->
+      </class> <!-- TestRun.TestMain2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -14,8 +14,6 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Root>
-        <File name="TestExecutionLog" fileName="logs/test-execution.log">
-    <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
-</File>
+     
     </Loggers>
 </Configuration>
