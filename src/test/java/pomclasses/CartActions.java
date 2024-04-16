@@ -98,7 +98,7 @@ public class CartActions {
      * @return The total price of the products in the cart.
      */
     public synchronized String getTotalPrice() {
-        logger.info("Getting total price from cart");
+        logger.debug("Getting total price from cart");
         return totalPrice.getText();
     }
 
@@ -106,7 +106,7 @@ public class CartActions {
      * Removes a product from the cart.
      */
     public synchronized void removeProductFromCart() {
-        logger.info("Removing product from cart");
+        logger.warn("Removing product from cart");
         removeButton.click();
     }
 
