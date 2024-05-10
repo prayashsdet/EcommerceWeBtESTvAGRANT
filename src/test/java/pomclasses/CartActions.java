@@ -79,9 +79,11 @@ public class CartActions {
      * Retrieves the quantity of the product in the cart.
      * @return The quantity of the product.
      */
-    public synchronized String getProductQuantity() {
+    public synchronized int getProductQuantity() {
 //        logger.warn("Getting product quantity from cart");
-        return productQuantity.getDomAttribute("value");
+    	String quantityAsString = productQuantity.getDomAttribute("value");
+        int quantityAsInt = Integer.parseInt(quantityAsString);
+        return quantityAsInt;
     }
 
     /**

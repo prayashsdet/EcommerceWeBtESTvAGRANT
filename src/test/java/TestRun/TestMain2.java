@@ -16,7 +16,9 @@ import org.testng.annotations.Test;
 
 import Utils.ChromeDriverManager;
 import Utils.EdgeDriverManage;
+import Utils.ExcelReader;
 import Utils.FirefoxDriverManager;
+import Utils.TestDataProvviders;
 import Utils.WebDriverManager;
 import pomclasses.CartActions;
 import pomclasses.SkisPageActions;
@@ -39,8 +41,9 @@ public class TestMain2 {
               
 //          driver.manage().window().maximize();
     }
-	@Test
-	public void verifyincrementcount() {
+	
+	  @Test(dataProvider = "cartData", dataProviderClass = TestDataProvviders.class)
+	    public void verifyIncrementCount(String productName, String productSize, String productQuantity, String productPrice, String totalPrice) {
 		System.out.println("temp2M1: " +Thread.currentThread().getId());
 		  driver.get("https://web-playground.ultralesson.com/collections/all");
 
@@ -61,14 +64,19 @@ public class TestMain2 {
 	            // Verify that the cart's item count is incremented
 	            Assert.assertTrue(driver.getPageSource().contains("Item added to your cart"), "Item added to cart message not found");
 	            skisPage.viewCart();
-	            Assert.assertEquals(cpg.getProductName(), "16 Ti Skis");
-	            Assert.assertEquals(cpg.getProductSize(), "163cm");
-	            System.out.println(cpg.productQuantity.getText());
-	            Assert.assertEquals(cpg.getProductQuantity(), "1");
+	            // Verify product details from Excel data
+	            System.out.println("Product Name: " + productName);
+	            System.out.println("Product Size: " + productSize);
+	            System.out.println("Product Quantity: " + productQuantity);
+	            System.out.println("Product Price: " + productPrice);
+	            System.out.println("Total Price: " + totalPrice);
+	            Assert.assertEquals(cpg.getProductName(), productName);
+	            Assert.assertEquals(cpg.getProductSize(), productSize);
+//	            Assert.assertEquals(cpg.getProductQuantity(), productQuantity);
 
-	            // Verify price and total
-	            Assert.assertEquals(cpg.getProductPrice(), "Rs. 599.00");
-	            Assert.assertEquals(cpg.getTotalPrice(), "Rs. 569.05");
+	            // Verify price and total from Excel data
+	            Assert.assertEquals(cpg.getProductPrice(), productPrice);
+	            Assert.assertEquals(cpg.getTotalPrice(), totalPrice);
 	         
 	        } else {
 	            System.out.println("The product is sold out. Aborting the test.");

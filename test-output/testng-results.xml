@@ -2,20 +2,47 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-16T10:12:17Z" name="Default suite" finished-at="2024-04-16T10:12:29Z" duration-ms="12105">
+  <suite started-at="2024-04-17T19:20:19Z" name="Default suite" finished-at="2024-04-17T19:20:32Z" duration-ms="12915">
     <groups>
     </groups>
-    <test started-at="2024-04-16T10:12:17Z" name="Default test" finished-at="2024-04-16T10:12:29Z" duration-ms="12105">
+    <test started-at="2024-04-17T19:20:19Z" name="Default test" finished-at="2024-04-17T19:20:32Z" duration-ms="12915">
       <class name="TestRun.TestMain2">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:TestRun.TestMain2@265adfad]" started-at="2024-04-16T10:12:17Z" name="setUp" finished-at="2024-04-16T10:12:24Z" duration-ms="7027" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestRun.TestMain2@4b41dd5c]" started-at="2024-04-17T19:20:19Z" name="setUp" finished-at="2024-04-17T19:20:27Z" duration-ms="7759" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyincrementcount()[pri:0, instance:TestRun.TestMain2@265adfad]" started-at="2024-04-16T10:12:24Z" name="verifyincrementcount" finished-at="2024-04-16T10:12:28Z" duration-ms="4273" status="PASS">
+        <test-method signature="verifyIncrementCount(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:TestRun.TestMain2@4b41dd5c]" started-at="2024-04-17T19:20:27Z" name="verifyIncrementCount" data-provider="cartData" finished-at="2024-04-17T19:20:31Z" duration-ms="3717" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[16 Ti Skis]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[163cm]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[1.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Rs. 599.00]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Rs. 569.05]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyincrementcount -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestRun.TestMain2@265adfad]" started-at="2024-04-16T10:12:28Z" name="tearDown" finished-at="2024-04-16T10:12:29Z" duration-ms="789" status="PASS">
+        </test-method> <!-- verifyIncrementCount -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestRun.TestMain2@4b41dd5c]" started-at="2024-04-17T19:20:31Z" name="tearDown" finished-at="2024-04-17T19:20:32Z" duration-ms="1044" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
